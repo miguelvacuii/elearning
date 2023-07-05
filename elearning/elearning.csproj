@@ -6,6 +6,11 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\" />
+    <Folder Include="src\" />
+    <Folder Include="src\Shared\" />
+    <Folder Include="src\Shared\Infrastructure\" />
+    <Folder Include="src\Shared\Infrastructure\Persistence\" />
+    <Folder Include="src\Shared\Infrastructure\Persistence\Context\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -15,6 +20,7 @@
     <PackageReference Include="Swashbuckle.AspNetCore.Filters" Version="4.5.3" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer" Version="2.2.0" />
+    <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="2.1.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -22,5 +28,11 @@
     <None Remove="Swashbuckle.AspNetCore.Filters" />
     <None Remove="Microsoft.AspNetCore.Mvc.Versioning" />
     <None Remove="Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer" />
+    <None Remove="Pomelo.EntityFrameworkCore.MySql" />
+    <None Remove="src\" />
+    <None Remove="src\Shared\" />
+    <None Remove="src\Shared\Infrastructure\" />
+    <None Remove="src\Shared\Infrastructure\Persistence\" />
+    <None Remove="src\Shared\Infrastructure\Persistence\Context\" />
   </ItemGroup>
 </Project>
