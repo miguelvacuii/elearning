@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using elearning.src.Shared.Infrastructure.Persistence.Context;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.AspNetCore.Mvc.Versioning;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -58,6 +60,12 @@ namespace elearning
             );
 
 
+            // MySQL
+            services.AddDbContextPool<ELearningContext>(options => options
+                .UseMySql(Configuration.GetConnectionString("DefaultConnection"))
+                .EnableSensitiveDataLogging()
+            );
+            services.AddScoped<ELearningContext>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
