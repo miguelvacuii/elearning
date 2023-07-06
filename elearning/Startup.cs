@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using elearning.src.Shared.Domain.Bus.Command;
+using elearning.src.Shared.Domain.Bus.Query;
+using elearning.src.Shared.Infrastructure.Bus.Command;
+using elearning.src.Shared.Infrastructure.Bus.Query;
 using elearning.src.Shared.Infrastructure.Persistence.Context;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -66,6 +70,12 @@ namespace elearning
                 .EnableSensitiveDataLogging()
             );
             services.AddScoped<ELearningContext>();
+
+
+            // Shared
+            services.AddScoped<ICommandBus, SyncCommandBus>();
+            services.AddScoped<IQueryBus, QueryBus>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
