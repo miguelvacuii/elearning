@@ -11,6 +11,13 @@
     <Folder Include="src\Shared\Infrastructure\" />
     <Folder Include="src\Shared\Infrastructure\Persistence\" />
     <Folder Include="src\Shared\Infrastructure\Persistence\Context\" />
+    <Folder Include="src\Shared\Domain\" />
+    <Folder Include="src\Shared\Domain\Bus\" />
+    <Folder Include="src\Shared\Domain\Bus\Command\" />
+    <Folder Include="src\Shared\Infrastructure\Bus\" />
+    <Folder Include="src\Shared\Infrastructure\Bus\Command\" />
+    <Folder Include="src\Shared\Infrastructure\Bus\Query\" />
+    <Folder Include="src\Shared\Domain\Bus\Query\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -34,5 +41,12 @@
     <None Remove="src\Shared\Infrastructure\" />
     <None Remove="src\Shared\Infrastructure\Persistence\" />
     <None Remove="src\Shared\Infrastructure\Persistence\Context\" />
+    <None Remove="src\Shared\Domain\" />
+    <None Remove="src\Shared\Domain\Bus\" />
+    <None Remove="src\Shared\Domain\Bus\Command\" />
+    <None Remove="src\Shared\Infrastructure\Bus\" />
+    <None Remove="src\Shared\Infrastructure\Bus\Command\" />
+    <None Remove="src\Shared\Infrastructure\Bus\Query\" />
+    <None Remove="src\Shared\Domain\Bus\Query\" />
   </ItemGroup>
 </Project>
