@@ -19,6 +19,12 @@
     <Folder Include="src\Shared\Infrastructure\Bus\Query\" />
     <Folder Include="src\Shared\Domain\Bus\Query\" />
     <Folder Include="src\Shared\Domain\Exception\" />
+    <Folder Include="src\IAM\" />
+    <Folder Include="src\IAM\User\" />
+    <Folder Include="src\IAM\User\Domain\" />
+    <Folder Include="src\IAM\User\Infrastructure\" />
+    <Folder Include="src\IAM\User\Domain\Service\" />
+    <Folder Include="src\IAM\User\Domain\Service\Exception\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -50,5 +56,11 @@
     <None Remove="src\Shared\Infrastructure\Bus\Query\" />
     <None Remove="src\Shared\Domain\Bus\Query\" />
     <None Remove="src\Shared\Domain\Exception\" />
+    <None Remove="src\IAM\" />
+    <None Remove="src\IAM\User\" />
+    <None Remove="src\IAM\User\Domain\" />
+    <None Remove="src\IAM\User\Infrastructure\" />
+    <None Remove="src\IAM\User\Domain\Service\" />
+    <None Remove="src\IAM\User\Domain\Service\Exception\" />
   </ItemGroup>
 </Project>
