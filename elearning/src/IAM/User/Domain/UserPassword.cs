@@ -9,11 +9,14 @@ namespace elearning.src.IAM.User.Domain
 		private const string PATTERN = "^[a-zA-Z0-9]{8,15}$";
 		// TO-DO, la expresión regular no valida al menos dos números y dos mayúsculas
 
+		public const int MIN_LENGTH = 8;
+		public const int MAX_LENGTH = 15;
+
 		public UserPassword(string value) : base(value)
 		{
 			if (!this.Is(value))
 			{
-				throw InvalidAttributeException.FromValue("passord", value);
+				throw InvalidAttributeException.FromValue("password", value);
 			}
 		}
 

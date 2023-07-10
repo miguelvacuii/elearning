@@ -1,0 +1,37 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Moq" Version="4.18.4" />
+    <PackageReference Include="NUnit" Version="3.12.0" />
+    <PackageReference Include="NUnit3TestAdapter" Version="3.16.1" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\elearning\elearning.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="IAM\" />
+    <None Remove="IAM\User\" />
+    <None Remove="IAM\User\Domain\" />
+    <None Remove="IAM\User\Domain\Stub\" />
+    <None Remove="IAM\User\Domain\Service\" />
+    <None Remove="Shared\" />
+    <None Remove="Shared\Domain\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="IAM\" />
+    <Folder Include="IAM\User\" />
+    <Folder Include="IAM\User\Domain\" />
+    <Folder Include="IAM\User\Domain\Stub\" />
+    <Folder Include="IAM\User\Domain\Service\" />
+    <Folder Include="Shared\" />
+    <Folder Include="Shared\Domain\" />
+  </ItemGroup>
+</Project>

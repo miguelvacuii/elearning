@@ -34,18 +34,18 @@ namespace elearning.src.Shared.Domain
 			this.role = role;
 		}
 
-		public bool IsStudent(string role)
+		public static bool IsStudent(string role)
 		{
 			return role == ROLE_STUDENT;
 		}
 
-		public bool IsTeacher(string role)
+		public static bool IsTeacher(string role)
 		{
 
 			return role == ROLE_TEACHER;
 		}
 
-		public bool IsAdministrator(string role)
+		public static bool IsAdministrator(string role)
 		{
 			return role == ROLE_ADMINISTRATOR;
 		}
