@@ -38,6 +38,11 @@
     <Folder Include="src\IAM\User\UI\Rest\Controller\" />
     <Folder Include="src\Shared\Infrastructure\Service\JsonApi\" />
     <Folder Include="src\IAM\User\UI\Rest\Controller\Response\" />
+    <Folder Include="src\IAM\User\Infrastructure\Persistence\" />
+    <Folder Include="src\IAM\User\Infrastructure\Persistence\Mapping\" />
+    <Folder Include="src\Shared\Infrastructure\Persistence\Repository\" />
+    <Folder Include="src\Shared\Infrastructure\Helper\" />
+    <Folder Include="src\IAM\User\Infrastructure\Persistence\Repository\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -90,5 +95,10 @@
     <None Remove="src\Shared\Infrastructure\Service\JSONApi\" />
     <None Remove="JsonApiSerializer" />
     <None Remove="src\IAM\User\UI\Rest\Controller\Response\" />
+    <None Remove="src\IAM\User\Infrastructure\Persistence\" />
+    <None Remove="src\IAM\User\Infrastructure\Persistence\Mapping\" />
+    <None Remove="src\Shared\Infrastructure\Persistence\Repository\" />
+    <None Remove="src\Shared\Infrastructure\Helper\" />
+    <None Remove="src\IAM\User\Infrastructure\Persistence\Repository\" />
   </ItemGroup>
 </Project>

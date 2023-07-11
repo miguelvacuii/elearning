@@ -5,11 +5,13 @@ using System.Threading.Tasks;
 using elearning.src.IAM.User.Application.Command.SignUp;
 using elearning.src.IAM.User.Domain;
 using elearning.src.IAM.User.Domain.Service;
+using elearning.src.IAM.User.Infrastructure.Persistence.Repository;
 using elearning.src.Shared.Domain.Bus.Command;
 using elearning.src.Shared.Domain.Bus.Query;
 using elearning.src.Shared.Infrastructure.Bus.Command;
 using elearning.src.Shared.Infrastructure.Bus.Query;
 using elearning.src.Shared.Infrastructure.Persistence.Context;
+using elearning.src.Shared.Infrastructure.Persistence.Repository;
 using elearning.src.Shared.Infrastructure.Service.Hashing;
 using elearning.src.Shared.Infrastructure.Service.JsonApi;
 using Microsoft.AspNetCore.Builder;
@@ -85,6 +87,11 @@ namespace elearning
             // Shared / Infrastructure
             services.AddScoped<IHashing, DefaultHashing>();
             services.AddScoped<IJsonApiEncoder, JsonApiEncoder>();
+
+            // IAM / User / Domain
+            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped(typeof(IRepository<>), typeof(EntityFrameworkRepository<>));
+
 
             // IAM / User / Appllication
             services.AddScoped<SignUpUserCommandHandler>();
