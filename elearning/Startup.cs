@@ -106,6 +106,10 @@ namespace elearning
             app.Use((context, next) =>
             {
                 ICommandBus commandBus = context.RequestServices.GetRequiredService<ICommandBus>();
+
+                SignUpUserCommandHandler signUpUserCommandHandler = context.RequestServices.GetRequiredService<SignUpUserCommandHandler>();
+                commandBus.Subscribe(signUpUserCommandHandler);
+
                 commandBus.AddMiddleware(context.RequestServices.GetRequiredService<TransactionMiddleware>());
 
                 return next();

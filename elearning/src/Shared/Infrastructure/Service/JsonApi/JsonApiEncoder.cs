@@ -9,13 +9,13 @@ namespace elearning.src.Shared.Infrastructure.Service.JsonApi
         public object EncodeData(IResponse response)
         {
             string responseJson = JsonConvert.SerializeObject(response, new JsonApiSerializerSettings());
-            return JsonConvert.DeserializeObject(response.ToString(), new JsonApiSerializerSettings());
+            return JsonConvert.DeserializeObject(responseJson, new JsonApiSerializerSettings());
         }
 
         public object EncodeError(IResponse response)
         {
             string responseJson = JsonConvert.SerializeObject(response, new JsonApiSerializerSettings());
-            return JsonConvert.DeserializeObject(response.ToString(), new JsonApiSerializerSettings());
+            return JsonConvert.DeserializeObject(responseJson, new JsonApiSerializerSettings());
         }
     }
 }
