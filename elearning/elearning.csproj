@@ -25,6 +25,19 @@
     <Folder Include="src\IAM\User\Infrastructure\" />
     <Folder Include="src\IAM\User\Domain\Service\" />
     <Folder Include="src\IAM\User\Domain\Service\Exception\" />
+    <Folder Include="src\IAM\User\Application\" />
+    <Folder Include="src\IAM\User\Application\Command\" />
+    <Folder Include="src\IAM\User\Application\Command\SignUp\" />
+    <Folder Include="src\Shared\Infrastructure\Service\" />
+    <Folder Include="src\Shared\Infrastructure\Service\Hashing\" />
+    <Folder Include="src\IAM\User\UI\" />
+    <Folder Include="src\Shared\UI\" />
+    <Folder Include="src\Shared\UI\Rest\" />
+    <Folder Include="src\Shared\UI\Rest\Controller\" />
+    <Folder Include="src\IAM\User\UI\Rest\" />
+    <Folder Include="src\IAM\User\UI\Rest\Controller\" />
+    <Folder Include="src\Shared\Infrastructure\Service\JsonApi\" />
+    <Folder Include="src\IAM\User\UI\Rest\Controller\Response\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -35,6 +48,7 @@
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer" Version="2.2.0" />
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="2.1.0" />
+    <PackageReference Include="JsonApiSerializer" Version="1.7.4" />
   </ItemGroup>
 
   <ItemGroup>
@@ -62,5 +76,19 @@
     <None Remove="src\IAM\User\Infrastructure\" />
     <None Remove="src\IAM\User\Domain\Service\" />
     <None Remove="src\IAM\User\Domain\Service\Exception\" />
+    <None Remove="src\IAM\User\Application\" />
+    <None Remove="src\IAM\User\Application\Command\" />
+    <None Remove="src\IAM\User\Application\Command\SignUp\" />
+    <None Remove="src\Shared\Infrastructure\Service\" />
+    <None Remove="src\Shared\Infrastructure\Service\Hashing\" />
+    <None Remove="src\IAM\User\UI\" />
+    <None Remove="src\Shared\UI\" />
+    <None Remove="src\Shared\UI\Rest\" />
+    <None Remove="src\Shared\UI\Rest\Controller\" />
+    <None Remove="src\IAM\User\UI\Rest\" />
+    <None Remove="src\IAM\User\UI\Rest\Controller\" />
+    <None Remove="src\Shared\Infrastructure\Service\JSONApi\" />
+    <None Remove="JsonApiSerializer" />
+    <None Remove="src\IAM\User\UI\Rest\Controller\Response\" />
   </ItemGroup>
 </Project>
