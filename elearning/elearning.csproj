@@ -43,6 +43,8 @@
     <Folder Include="src\Shared\Infrastructure\Persistence\Repository\" />
     <Folder Include="src\Shared\Infrastructure\Helper\" />
     <Folder Include="src\IAM\User\Infrastructure\Persistence\Repository\" />
+    <Folder Include="src\Shared\Infrastructure\Bus\Command\Middleware\" />
+    <Folder Include="src\Shared\Domain\Bus\Command\Middleware\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -100,5 +102,7 @@
     <None Remove="src\Shared\Infrastructure\Persistence\Repository\" />
     <None Remove="src\Shared\Infrastructure\Helper\" />
     <None Remove="src\IAM\User\Infrastructure\Persistence\Repository\" />
+    <None Remove="src\Shared\Infrastructure\Bus\Command\Middleware\" />
+    <None Remove="src\Shared\Domain\Bus\Command\Middleware\" />
   </ItemGroup>
 </Project>

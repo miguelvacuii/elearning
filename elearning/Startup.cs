@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using elearning.Shared.Infrastructure.Bus.Command.Middleware;
 using elearning.src.IAM.User.Application.Command.SignUp;
 using elearning.src.IAM.User.Domain;
 using elearning.src.IAM.User.Domain.Service;
@@ -85,6 +86,7 @@ namespace elearning
             services.AddScoped<UniqueUser>();
 
             // Shared / Infrastructure
+            services.AddScoped<TransactionMiddleware>();
             services.AddScoped<IHashing, DefaultHashing>();
             services.AddScoped<IJsonApiEncoder, JsonApiEncoder>();
 
@@ -104,8 +106,7 @@ namespace elearning
             app.Use((context, next) =>
             {
                 ICommandBus commandBus = context.RequestServices.GetRequiredService<ICommandBus>();
-                SignUpUserCommandHandler signUpUserCommandHandler = context.RequestServices.GetRequiredService<SignUpUserCommandHandler>();
-                commandBus.Subscribe(signUpUserCommandHandler);
+                commandBus.AddMiddleware(context.RequestServices.GetRequiredService<TransactionMiddleware>());
 
                 return next();
             });
