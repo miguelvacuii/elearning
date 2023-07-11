@@ -1,15 +1,20 @@
-﻿using System.Collections.Generic;
+﻿
+using System.Collections.Generic;
+using elearning.src.Shared.Infrastructure.Bus.Command.Middleware;
 using elearning.src.Shared.Domain.Bus.Command;
+using elearning.src.Shared.Domain.Bus.Command.Middleware;
 
 namespace elearning.src.Shared.Infrastructure.Bus.Command
 {
     public class SyncCommandBus : ICommandBus
     {
         private Dictionary<string, ICommandHandler> commandHandlers;
+        private List<IMiddlewareHandler> middlewareHandlers;
 
         public SyncCommandBus()
         {
             commandHandlers = new Dictionary<string, ICommandHandler>();
+            middlewareHandlers = new List<IMiddlewareHandler>();
 
         }
 
@@ -17,6 +22,11 @@ namespace elearning.src.Shared.Infrastructure.Bus.Command
         {
             string commandhandlerFullName = GetObjectFullName(commandHandler);
             commandHandlers.Add(commandhandlerFullName, commandHandler);
+        }
+
+        public void AddMiddleware(IMiddlewareHandler middlewareHandler)
+        {
+            middlewareHandlers.Add(middlewareHandler);
         }
 
         public void Dispatch(ICommand command)
@@ -27,6 +37,21 @@ namespace elearning.src.Shared.Infrastructure.Bus.Command
             string commandHandlerFullName = requestNamespace + "." + commandHandlerName;
 
             ICommandHandler commandHandler = commandHandlers[commandHandlerFullName];
+
+            IMiddlewareHandler middlewareHandler = new CommandHandlerMiddleware(commandHandler);
+            middlewareHandler = LoadHandlers(middlewareHandler);
+            middlewareHandler.Handle(command);
+        }
+
+        private IMiddlewareHandler LoadHandlers(IMiddlewareHandler middlewareHandler)
+        {
+            foreach (IMiddlewareHandler handler in middlewareHandlers)
+            {
+                handler.SetNext(middlewareHandler);
+                middlewareHandler = handler;
+            }
+
+            return middlewareHandler;
         }
 
         // TO-DO refactorizar porque será código repetitivo al crer más commands
@@ -46,3 +71,4 @@ namespace elearning.src.Shared.Infrastructure.Bus.Command
         }
     }
 }
+
