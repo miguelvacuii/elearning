@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using elearning.src.IAM.User.Domain.Event;
 using elearning.src.Shared.Domain;
 
 namespace elearning.src.IAM.User.Domain
@@ -55,6 +57,22 @@ namespace elearning.src.IAM.User.Domain
 				createdAt,
 				updatedAt
 			);
+
+			user.Record(
+   				new UserSignedUpEvent(
+   					user.id.Value,
+						new Dictionary<string, string>()
+						{
+							["email"] = user.email.Value,
+							["first_name"] = user.firstName.Value,
+							["last_name"] = user.lastName.Value,
+							["role"] = user.role.Value,
+							["created_at"] = user.createdAt.Value.ToString(),
+							["updated_at"] = user.updatedAt.Value.ToString(),
+						}
+				 )
+			);
+
 
 			return user;
 		}

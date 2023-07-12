@@ -2,6 +2,7 @@
 using elearning.src.IAM.User.Domain;
 using elearning.src.IAM.User.Domain.Service;
 using elearning.src.Shared.Domain;
+using elearning.src.Shared.Domain.Bus.Event;
 using elearning.src.Shared.Infrastructure.Service.Hashing;
 using elearning.Tests.IAM.User.Domain.Stub;
 using Moq;
@@ -34,10 +35,11 @@ namespace elearning.Tests.IAM.User.Application.Command
         {
             Mock<IHashing> hashing = CreateAndSetupHashingMock();
             Mock<IUserRepository> userRepository = new Mock<IUserRepository>();
+            Mock<IEventProvider> eventProvider = new Mock<IEventProvider>();
             Mock<UniqueUser> uniqueUser = new Mock<UniqueUser>(userRepository.Object);
 
             Mock<SignUpUserUseCase> signUpUserUseCase = CreateAndSetupSignUpUserUseCaseMock(
-                userRepository, uniqueUser
+                userRepository, uniqueUser, eventProvider
             );
 
             SignUpUserCommandHandler signUpUserCommandHandler = new SignUpUserCommandHandler(
@@ -56,9 +58,10 @@ namespace elearning.Tests.IAM.User.Application.Command
         {
             Mock<IHashing> hashing = CreateAndSetupHashingMock();
             Mock<IUserRepository> userRepository = new Mock<IUserRepository>();
+            Mock<IEventProvider> eventProvider = new Mock<IEventProvider>();
             Mock<UniqueUser> uniqueUser = new Mock<UniqueUser>(userRepository.Object);
             Mock<SignUpUserUseCase> signUpUserUseCase = CreateAndSetupSignUpUserUseCaseMock(
-                userRepository, uniqueUser
+                userRepository, uniqueUser, eventProvider
             );
 
             SignUpUserCommandHandler signUpUserCommandHandler = new SignUpUserCommandHandler(
@@ -81,11 +84,12 @@ namespace elearning.Tests.IAM.User.Application.Command
 
         private Mock<SignUpUserUseCase> CreateAndSetupSignUpUserUseCaseMock(
             Mock<IUserRepository> userRepository,
-            Mock<UniqueUser> uniqueUser
+            Mock<UniqueUser> uniqueUser,
+            Mock<IEventProvider> eventProvider
         )
         {
             Mock<SignUpUserUseCase> signUpUserUseCase = new Mock<SignUpUserUseCase>(
-                userRepository.Object, uniqueUser.Object
+                userRepository.Object, uniqueUser.Object, eventProvider.Object
             );
             signUpUserUseCase.Setup(m => m.Invoke(
                 It.IsAny<UserId>(),

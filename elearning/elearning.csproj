@@ -45,6 +45,11 @@
     <Folder Include="src\IAM\User\Infrastructure\Persistence\Repository\" />
     <Folder Include="src\Shared\Infrastructure\Bus\Command\Middleware\" />
     <Folder Include="src\Shared\Domain\Bus\Command\Middleware\" />
+    <Folder Include="src\Shared\Domain\Bus\Event\" />
+    <Folder Include="src\Shared\Infrastructure\Bus\Event\" />
+    <Folder Include="src\IAM\User\Domain\Event\" />
+    <Folder Include="src\IAM\User\Application\Event\" />
+    <Folder Include="src\Shared\Infrastructure\Service\Mailer\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -104,5 +109,10 @@
     <None Remove="src\IAM\User\Infrastructure\Persistence\Repository\" />
     <None Remove="src\Shared\Infrastructure\Bus\Command\Middleware\" />
     <None Remove="src\Shared\Domain\Bus\Command\Middleware\" />
+    <None Remove="src\Shared\Domain\Bus\Event\" />
+    <None Remove="src\Shared\Infrastructure\Bus\Event\" />
+    <None Remove="src\IAM\User\Domain\Event\" />
+    <None Remove="src\IAM\User\Application\Event\" />
+    <None Remove="src\Shared\Infrastructure\Service\Mailer\" />
   </ItemGroup>
 </Project>

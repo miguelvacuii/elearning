@@ -5,6 +5,8 @@ using elearning.src.IAM.User.Domain.Service;
 using elearning.Tests.IAM.User.Domain.Stub;
 using Moq;
 using NUnit.Framework;
+using elearning.src.Shared.Domain.Bus.Event;
+using System.Collections.Generic;
 
 namespace elearning.Tests.IAM.User.Application.Command
 {
@@ -34,9 +36,10 @@ namespace elearning.Tests.IAM.User.Application.Command
         {
             Mock<IUserRepository> userRepository = new Mock<IUserRepository>();
             Mock<UniqueUser> uniqueUser = CreateAndSetupUniqueUserMock(userRepository);
+            Mock<IEventProvider> eventProvider = new Mock<IEventProvider>();
 
             SignUpUserUseCase signUpUserUseCase = new SignUpUserUseCase(
-                userRepository.Object, uniqueUser.Object
+                userRepository.Object, uniqueUser.Object, eventProvider.Object
             );
             signUpUserUseCase.Invoke(
                 userId, email, firstName, lastName, userHashedPassword, role
@@ -53,9 +56,10 @@ namespace elearning.Tests.IAM.User.Application.Command
         {
             Mock<IUserRepository> userRepository = CreatedAtAndSetupUserRepositoryMock();
             Mock<UniqueUser> uniqueUser = new Mock<UniqueUser>(userRepository.Object);
+            Mock<IEventProvider> eventProvider = new Mock<IEventProvider>();
 
             SignUpUserUseCase signUpUserUseCase = new SignUpUserUseCase(
-                userRepository.Object, uniqueUser.Object
+                userRepository.Object, uniqueUser.Object, eventProvider.Object
             );
             signUpUserUseCase.Invoke(
                 userId, email, firstName, lastName, userHashedPassword, role
@@ -63,6 +67,26 @@ namespace elearning.Tests.IAM.User.Application.Command
 
             userRepository.Verify(
                 m => m.Add(It.IsAny<UserAggregate>()),
+                Times.AtLeastOnce()
+            );
+        }
+
+        [Test]
+        public void ItShouldRecordReleasedUserEvents()
+        {
+            Mock<IUserRepository> userRepository = new Mock<IUserRepository>();
+            Mock<UniqueUser> uniqueUser = new Mock<UniqueUser>(userRepository.Object);
+            Mock<IEventProvider> eventProvider = CreateAndSetupEventProviderMock();
+
+            SignUpUserUseCase signUpUserUseCase = new SignUpUserUseCase(
+                userRepository.Object, uniqueUser.Object, eventProvider.Object
+            );
+            signUpUserUseCase.Invoke(
+                userId, email, firstName, lastName, userHashedPassword, role
+            );
+
+            eventProvider.Verify(
+                m => m.RecordEvents(It.IsAny<List<DomainEvent>>()),
                 Times.AtLeastOnce()
             );
         }
@@ -79,6 +103,13 @@ namespace elearning.Tests.IAM.User.Application.Command
             Mock<UniqueUser> uniqueUser = new Mock<UniqueUser>(userRepository.Object);
             uniqueUser.Setup(m => m.CheckUserEmailNotExists(It.IsAny<UserEmail>())).Verifiable();
             return uniqueUser;
+        }
+
+        private Mock<IEventProvider> CreateAndSetupEventProviderMock()
+        {
+            Mock<IEventProvider> eventProvider = new Mock<IEventProvider>();
+            eventProvider.Setup(m => m.RecordEvents(It.IsAny<List<DomainEvent>>())).Verifiable();
+            return eventProvider;
         }
     }
 }
