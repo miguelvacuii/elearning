@@ -3,18 +3,25 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using elearning.Shared.Infrastructure.Bus.Command.Middleware;
+using elearning.Shared.Infrastructure.Bus.Event;
 using elearning.src.IAM.User.Application.Command.SignUp;
+using elearning.src.IAM.User.Application.Event;
 using elearning.src.IAM.User.Domain;
+using elearning.src.IAM.User.Domain.Event;
 using elearning.src.IAM.User.Domain.Service;
 using elearning.src.IAM.User.Infrastructure.Persistence.Repository;
 using elearning.src.Shared.Domain.Bus.Command;
+using elearning.src.Shared.Domain.Bus.Event;
 using elearning.src.Shared.Domain.Bus.Query;
 using elearning.src.Shared.Infrastructure.Bus.Command;
+using elearning.src.Shared.Infrastructure.Bus.Command.Middleware;
+using elearning.src.Shared.Infrastructure.Bus.Event;
 using elearning.src.Shared.Infrastructure.Bus.Query;
 using elearning.src.Shared.Infrastructure.Persistence.Context;
 using elearning.src.Shared.Infrastructure.Persistence.Repository;
 using elearning.src.Shared.Infrastructure.Service.Hashing;
 using elearning.src.Shared.Infrastructure.Service.JsonApi;
+using elearning.src.Shared.Infrastructure.Service.Mailer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -89,6 +96,12 @@ namespace elearning
             services.AddScoped<TransactionMiddleware>();
             services.AddScoped<IHashing, DefaultHashing>();
             services.AddScoped<IJsonApiEncoder, JsonApiEncoder>();
+            services.AddScoped<IDomainEventPublisher, DomainEventPublisherSync>();
+            services.AddScoped<IEventBus, EventBusSync>();
+            services.AddScoped<IEventProvider, EventProvider>();
+            services.AddScoped<EventDispatcherSyncMiddleware>();
+            services.AddScoped<IMailer, Sendgrid>();
+
 
             // IAM / User / Domain
             services.AddScoped<IUserRepository, UserRepository>();
@@ -98,6 +111,8 @@ namespace elearning
             // IAM / User / Appllication
             services.AddScoped<SignUpUserCommandHandler>();
             services.AddScoped<SignUpUserUseCase>();
+            services.AddScoped<SendWelcomeEmailWhenUserSignedUpEventHandler>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -111,6 +126,15 @@ namespace elearning
                 commandBus.Subscribe(signUpUserCommandHandler);
 
                 commandBus.AddMiddleware(context.RequestServices.GetRequiredService<TransactionMiddleware>());
+
+                commandBus.AddMiddleware(context.RequestServices.GetRequiredService<EventDispatcherSyncMiddleware>());
+
+                IEventBus eventBus = context.RequestServices.GetRequiredService<IEventBus>();
+
+                eventBus.Subscribe(
+                    context.RequestServices.GetRequiredService<SendWelcomeEmailWhenUserSignedUpEventHandler>(),
+                    UserSignedUpEvent.NAME
+                );
 
                 return next();
             });
