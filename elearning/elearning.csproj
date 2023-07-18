@@ -50,6 +50,26 @@
     <Folder Include="src\IAM\User\Domain\Event\" />
     <Folder Include="src\IAM\User\Application\Event\" />
     <Folder Include="src\Shared\Infrastructure\Service\Mailer\" />
+    <Folder Include="src\IAM\Token\" />
+    <Folder Include="src\IAM\Token\UI\" />
+    <Folder Include="src\IAM\Token\UI\Rest\" />
+    <Folder Include="src\IAM\Token\UI\Rest\Controller\" />
+    <Folder Include="src\IAM\Token\Application\" />
+    <Folder Include="src\IAM\Token\Application\Command\" />
+    <Folder Include="src\IAM\Token\Application\Command\Create\" />
+    <Folder Include="src\IAM\Token\Infrastructure\" />
+    <Folder Include="src\IAM\Token\Application\Event\" />
+    <Folder Include="src\Shared\Infrastructure\Security\" />
+    <Folder Include="src\Shared\Infrastructure\Security\Authentication\" />
+    <Folder Include="src\Shared\Infrastructure\Security\Authentication\JWT\" />
+    <Folder Include="src\Shared\Infrastructure\Security\Authentication\JWT\Exception\" />
+    <Folder Include="src\IAM\Token\Domain\" />
+    <Folder Include="src\IAM\Token\Infrastructure\Persistence\" />
+    <Folder Include="src\IAM\Token\Domain\Event\" />
+    <Folder Include="src\IAM\Token\Infrastructure\Service\" />
+    <Folder Include="src\IAM\Token\Infrastructure\Service\Token\" />
+    <Folder Include="src\IAM\Token\Infrastructure\Persistence\Repository\" />
+    <Folder Include="src\IAM\Token\Infrastructure\Persistence\Mapping\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -114,5 +134,25 @@
     <None Remove="src\IAM\User\Domain\Event\" />
     <None Remove="src\IAM\User\Application\Event\" />
     <None Remove="src\Shared\Infrastructure\Service\Mailer\" />
+    <None Remove="src\IAM\Token\" />
+    <None Remove="src\IAM\Token\UI\" />
+    <None Remove="src\IAM\Token\UI\Rest\" />
+    <None Remove="src\IAM\Token\UI\Rest\Controller\" />
+    <None Remove="src\IAM\Token\Application\" />
+    <None Remove="src\IAM\Token\Application\Command\" />
+    <None Remove="src\IAM\Token\Application\Command\Create\" />
+    <None Remove="src\IAM\Token\Infrastructure\" />
+    <None Remove="src\IAM\Token\Application\Event\" />
+    <None Remove="src\Shared\Infrastructure\Security\" />
+    <None Remove="src\Shared\Infrastructure\Security\Authentication\" />
+    <None Remove="src\Shared\Infrastructure\Security\Authentication\JWT\" />
+    <None Remove="src\Shared\Infrastructure\Security\Authentication\JWT\Exception\" />
+    <None Remove="src\IAM\Token\Domain\" />
+    <None Remove="src\IAM\Token\Infrastructure\Persistence\" />
+    <None Remove="src\IAM\Token\Domain\Event\" />
+    <None Remove="src\IAM\Token\Infrastructure\Service\" />
+    <None Remove="src\IAM\Token\Infrastructure\Service\Token\" />
+    <None Remove="src\IAM\Token\Infrastructure\Persistence\Repository\" />
+    <None Remove="src\IAM\Token\Infrastructure\Persistence\Mapping\" />
   </ItemGroup>
 </Project>
