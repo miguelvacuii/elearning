@@ -9,6 +9,8 @@ using elearning.src.IAM.Token.Infrastructure.Persistence.Repository;
 using elearning.src.IAM.Token.Infrastructure.Service.Token;
 using elearning.src.IAM.User.Application.Command.SignUp;
 using elearning.src.IAM.User.Application.Event;
+using elearning.src.IAM.User.Application.Query.FindUserByCredentials;
+using elearning.src.IAM.User.Application.Query.Response;
 using elearning.src.IAM.User.Domain;
 using elearning.src.IAM.User.Domain.Event;
 using elearning.src.IAM.User.Domain.Service;
@@ -132,17 +134,19 @@ namespace elearning
             services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
             // Shared / Domain
-            services.AddScoped<ICommandBus, SyncCommandBus>();
-            services.AddScoped<IQueryBus, QueryBus>();
             services.AddScoped<UniqueUser>();
 
             // Shared / Infrastructure
-            services.AddScoped<TransactionMiddleware>();
-            services.AddScoped<IHashing, DefaultHashing>();
-            services.AddScoped<IDomainEventPublisher, DomainEventPublisherSync>();
+            services.AddScoped<ELearningContext>();
+            services.AddScoped(typeof(IRepository<>), typeof(EntityFrameworkRepository<>));
+            services.AddScoped<ICommandBus, SyncCommandBus>();
+            services.AddScoped<IQueryBus, QueryBus>();
             services.AddScoped<IEventBus, EventBusSync>();
+            services.AddScoped<IDomainEventPublisher, DomainEventPublisherSync>();
             services.AddScoped<IEventProvider, EventProvider>();
+            services.AddScoped<TransactionMiddleware>();
             services.AddScoped<EventDispatcherSyncMiddleware>();
+            services.AddScoped<IHashing, DefaultHashing>();
             services.AddScoped<IMailer, Sendgrid>();
             services.AddScoped<IJsonApiEncoder, JsonApiEncoder>();
             services.AddScoped<IJWTEncoder, JWTEncoder>();
@@ -151,7 +155,6 @@ namespace elearning
 
             // IAM / User / Infrastructure
             services.AddScoped<IUserRepository, UserRepository>();
-            services.AddScoped(typeof(IRepository<>), typeof(EntityFrameworkRepository<>));
 
 
             // IAM / User / Appllication
@@ -159,13 +162,16 @@ namespace elearning
             services.AddScoped<SignUpUserUseCase>();
             services.AddScoped<SendWelcomeEmailWhenUserSignedUpEventHandler>();
 
+            services.AddScoped<FindUserByCredentialsQueryHandler>();
+            services.AddScoped<FindUserByCredentialsUseCase>();
+            services.AddScoped<UserResponseForTokenConverter>();
+
             // IAM / Token / Domain
             services.AddScoped<TokenFacade>();
             services.AddScoped<TokenTranslator>();
             services.AddScoped<TokenAdapter>();
 
             // IAM / Token / Infrastructure
-            services.AddScoped<ITokenRepository, TokenRepository>();
             services.AddScoped<ITokenRepository, TokenRepository>();
 
             // IAM / Token / Application
@@ -190,6 +196,11 @@ namespace elearning
                 commandBus.AddMiddleware(context.RequestServices.GetRequiredService<TransactionMiddleware>());
 
                 commandBus.AddMiddleware(context.RequestServices.GetRequiredService<EventDispatcherSyncMiddleware>());
+
+                IQueryBus queryBus = context.RequestServices.GetRequiredService<IQueryBus>();
+
+                FindUserByCredentialsQueryHandler findUserByCredentialsQueryHandler = context.RequestServices.GetRequiredService<FindUserByCredentialsQueryHandler>();
+                queryBus.Subscribe(findUserByCredentialsQueryHandler);
 
                 IEventBus eventBus = context.RequestServices.GetRequiredService<IEventBus>();
 

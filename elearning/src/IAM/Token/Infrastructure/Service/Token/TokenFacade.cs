@@ -1,19 +1,21 @@
-﻿using elearning.src.IAM.User.Domain;
-using UserAggregate = elearning.src.IAM.User.Domain.User;
+﻿using elearning.src.IAM.User.Application.Query.FindUserByCredentials;
+using elearning.src.Shared.Domain.Bus.Query;
 
 namespace elearning.src.IAM.Token.Infrastructure.Service.Token
 {
-    public class TokenFacade {
+    public class TokenFacade
+    {
+        private readonly IQueryBus queryBus;
 
-        private readonly IUserRepository userRepository;
-
-        public TokenFacade(IUserRepository userRepository) {
-            this.userRepository = userRepository;
+        public TokenFacade(IQueryBus queryBus)
+        {
+            this.queryBus = queryBus;
         }
 
-        public UserAggregate FindPayloadByEmailAndPassword(string email, string password)
+        public virtual IResponse FindPayloadByEmailAndPassword(string email, string password)
         {
-            return userRepository.FindByEmail(new UserEmail(email));
+            FindUserByCredentialsQuery findUserByCredentialsQuery = new FindUserByCredentialsQuery(email, password);
+            return queryBus.Ask(findUserByCredentialsQuery);
         }
     }
 }

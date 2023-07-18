@@ -70,6 +70,9 @@
     <Folder Include="src\IAM\Token\Infrastructure\Service\Token\" />
     <Folder Include="src\IAM\Token\Infrastructure\Persistence\Repository\" />
     <Folder Include="src\IAM\Token\Infrastructure\Persistence\Mapping\" />
+    <Folder Include="src\IAM\User\Application\Query\" />
+    <Folder Include="src\IAM\User\Application\Query\FindUserByCredentials\" />
+    <Folder Include="src\IAM\User\Application\Query\Response\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -154,5 +157,8 @@
     <None Remove="src\IAM\Token\Infrastructure\Service\Token\" />
     <None Remove="src\IAM\Token\Infrastructure\Persistence\Repository\" />
     <None Remove="src\IAM\Token\Infrastructure\Persistence\Mapping\" />
+    <None Remove="src\IAM\User\Application\Query\" />
+    <None Remove="src\IAM\User\Application\Query\FindUserByCredentials\" />
+    <None Remove="src\IAM\User\Application\Query\Response\" />
   </ItemGroup>
 </Project>
