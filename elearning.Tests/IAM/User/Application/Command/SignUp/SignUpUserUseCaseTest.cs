@@ -14,11 +14,11 @@ namespace elearning.Tests.IAM.User.Application.Command
     public class SignUpUserUseCaseTest
     {
         private UserId userId;
-        UserEmail email;
-        UserFirstName firstName;
-        UserLastName lastName;
-        UserRole role;
-        UserHashedPassword userHashedPassword;
+        private UserEmail email;
+        private UserFirstName firstName;
+        private UserLastName lastName;
+        private UserRole role;
+        private UserHashedPassword userHashedPassword;
 
         [SetUp]
         public void Setup()

@@ -17,7 +17,7 @@ namespace elearning.src.IAM.Token.Application.Command.Create
             this.eventProvider = eventProvider;
         }
 
-        public void Invoke(
+        public virtual void Invoke(
             TokenHash tokenHash,
             TokenUserId tokenUserId
         )

@@ -27,6 +27,17 @@
     <None Remove="IAM\User\Application\" />
     <None Remove="IAM\User\Application\Command\" />
     <None Remove="IAM\User\Application\Command\SignUp\" />
+    <None Remove="IAM\User\Application\Query\" />
+    <None Remove="IAM\User\Application\Query\FindUserByCredentials\" />
+    <None Remove="IAM\Token\" />
+    <None Remove="IAM\Token\Domain\" />
+    <None Remove="IAM\Token\Domain\Stub\" />
+    <None Remove="IAM\Token\Application\" />
+    <None Remove="IAM\Token\Application\Command\" />
+    <None Remove="IAM\Token\Application\Command\Create\" />
+    <None Remove="IAM\Token\Infrastructure\" />
+    <None Remove="IAM\Token\Infrastructure\Service\" />
+    <None Remove="IAM\Token\Infrastructure\Service\Token\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="IAM\" />
@@ -39,5 +50,16 @@
     <Folder Include="IAM\User\Application\" />
     <Folder Include="IAM\User\Application\Command\" />
     <Folder Include="IAM\User\Application\Command\SignUp\" />
+    <Folder Include="IAM\User\Application\Query\" />
+    <Folder Include="IAM\User\Application\Query\FindUserByCredentials\" />
+    <Folder Include="IAM\Token\" />
+    <Folder Include="IAM\Token\Domain\" />
+    <Folder Include="IAM\Token\Domain\Stub\" />
+    <Folder Include="IAM\Token\Application\" />
+    <Folder Include="IAM\Token\Application\Command\" />
+    <Folder Include="IAM\Token\Application\Command\Create\" />
+    <Folder Include="IAM\Token\Infrastructure\" />
+    <Folder Include="IAM\Token\Infrastructure\Service\" />
+    <Folder Include="IAM\Token\Infrastructure\Service\Token\" />
   </ItemGroup>
 </Project>
