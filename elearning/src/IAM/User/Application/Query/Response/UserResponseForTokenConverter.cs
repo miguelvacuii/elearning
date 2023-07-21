@@ -7,7 +7,7 @@ namespace elearning.src.IAM.User.Application.Query.Response
     public class UserResponseForTokenConverter
     {
 
-        public IResponse Convert(UserAggregate user)
+        public virtual IResponse Convert(UserAggregate user)
         {
             return new UserResponseForToken(
                 user.id.Value,

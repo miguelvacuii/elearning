@@ -17,7 +17,7 @@ namespace elearning.src.IAM.Token.Infrastructure.Service.Token
             this.tokenTranslator = tokenTranslator;
         }
 
-        public Payload FindPayloadByEmailAndPassword(string email, string password)
+        public virtual Payload FindPayloadByEmailAndPassword(string email, string password)
         {
             IResponse response = tokenFacade.FindPayloadByEmailAndPassword(email, password);
             return tokenTranslator.FromRepresentationToPayload(response);

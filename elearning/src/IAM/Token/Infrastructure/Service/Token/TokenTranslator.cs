@@ -4,7 +4,7 @@ namespace elearning.src.IAM.Token.Infrastructure.Service.Token
 {
     public class TokenTranslator
     {
-        public Payload FromRepresentationToPayload(dynamic userResponse)
+        public virtual Payload FromRepresentationToPayload(dynamic userResponse)
         {
             return new Payload(
                 userResponse.id,
