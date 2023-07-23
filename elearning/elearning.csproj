@@ -73,6 +73,21 @@
     <Folder Include="src\IAM\User\Application\Query\" />
     <Folder Include="src\IAM\User\Application\Query\FindUserByCredentials\" />
     <Folder Include="src\IAM\User\Application\Query\Response\" />
+    <Folder Include="src\Shared\Infrastructure\Framework\" />
+    <Folder Include="src\Shared\Infrastructure\Framework\Startup\" />
+    <Folder Include="src\Shared\Infrastructure\Framework\Startup\Service\" />
+    <Folder Include="src\Shared\Infrastructure\Framework\Startup\Subscriber\" />
+    <Folder Include="src\IAM\User\Infrastructure\Framework\" />
+    <Folder Include="src\IAM\User\Infrastructure\Framework\Configure\" />
+    <Folder Include="src\IAM\User\Infrastructure\Framework\Configure\Startup\" />
+    <Folder Include="src\IAM\Token\Infrastructure\Framework\" />
+    <Folder Include="src\IAM\Token\Infrastructure\Framework\Configure\" />
+    <Folder Include="src\IAM\Token\Infrastructure\Framework\Configure\Startup\" />
+    <Folder Include="src\IAM\Token\Infrastructure\Framework\Configure\Startup\Service\" />
+    <Folder Include="src\IAM\User\Infrastructure\Framework\Configure\Startup\Service\" />
+    <Folder Include="src\IAM\Token\Infrastructure\Framework\Configure\Startup\Subscriber\" />
+    <Folder Include="src\IAM\User\Infrastructure\Framework\Configure\Startup\Subscriber\" />
+    <Folder Include="src\IAM\User\Infrastructure\Framework\Configure\Startup\Subscriber\SyncQuerySubscriber\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -160,5 +175,20 @@
     <None Remove="src\IAM\User\Application\Query\" />
     <None Remove="src\IAM\User\Application\Query\FindUserByCredentials\" />
     <None Remove="src\IAM\User\Application\Query\Response\" />
+    <None Remove="src\Shared\Infrastructure\Framework\" />
+    <None Remove="src\Shared\Infrastructure\Framework\Startup\" />
+    <None Remove="src\Shared\Infrastructure\Framework\Startup\Service\" />
+    <None Remove="src\Shared\Infrastructure\Framework\Startup\Subscriber\" />
+    <None Remove="src\IAM\User\Infrastructure\Framework\" />
+    <None Remove="src\IAM\User\Infrastructure\Framework\Configure\" />
+    <None Remove="src\IAM\User\Infrastructure\Framework\Configure\Startup\" />
+    <None Remove="src\IAM\Token\Infrastructure\Framework\" />
+    <None Remove="src\IAM\Token\Infrastructure\Framework\Configure\" />
+    <None Remove="src\IAM\Token\Infrastructure\Framework\Configure\Startup\" />
+    <None Remove="src\IAM\Token\Infrastructure\Framework\Configure\Startup\Service\" />
+    <None Remove="src\IAM\User\Infrastructure\Framework\Configure\Startup\Service\" />
+    <None Remove="src\IAM\Token\Infrastructure\Framework\Configure\Startup\Subscriber\" />
+    <None Remove="src\IAM\User\Infrastructure\Framework\Configure\Startup\Subscriber\" />
+    <None Remove="src\IAM\User\Infrastructure\Framework\Configure\Startup\Subscriber\SyncQuerySubscriber\" />
   </ItemGroup>
 </Project>
