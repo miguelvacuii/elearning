@@ -1,0 +1,5 @@
+﻿enum OrderTypeEnum
+{
+    ASC,
+    DESC
+}

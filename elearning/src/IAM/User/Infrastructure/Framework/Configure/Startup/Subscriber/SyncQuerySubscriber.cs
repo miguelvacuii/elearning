@@ -1,4 +1,5 @@
-﻿using elearning.src.IAM.User.Application.Query.FindUserByCredentials;
+﻿using elearning.src.IAM.User.Application.Query.FindByCriteria;
+using elearning.src.IAM.User.Application.Query.FindUserByCredentials;
 using elearning.src.Shared.Domain.Bus.Query;
 using elearning.src.Shared.Infrastructure.Framework.Startup.Subscriber;
 using Microsoft.AspNetCore.Http;
@@ -14,6 +15,9 @@ namespace elearning.src.IAM.User.Infrastructure.Framework.Configure.Startup.Subs
 
             FindUserByCredentialsQueryHandler findUserByCredentialsQueryHandler = context.RequestServices.GetRequiredService<FindUserByCredentialsQueryHandler>();
             queryBus.Subscribe(findUserByCredentialsQueryHandler);
+
+            FindUsersByCriteriaQueryHandler findUsersByCriteriaQueryHandler = context.RequestServices.GetRequiredService<FindUsersByCriteriaQueryHandler>();
+            queryBus.Subscribe(findUsersByCriteriaQueryHandler);
         }
     }
 }

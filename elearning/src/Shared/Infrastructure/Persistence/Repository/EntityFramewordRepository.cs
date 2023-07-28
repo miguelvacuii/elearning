@@ -5,6 +5,8 @@ using elearning.src.Shared.Infrastructure.Persistence.Context;
 using Microsoft.EntityFrameworkCore;
 using elearning.src.Shared.Domain;
 using Microsoft.Extensions.DependencyInjection;
+using System.Collections.Generic;
+using elearning.src.Shared.Domain.Query.Criteria;
 
 namespace elearning.src.Shared.Infrastructure.Persistence.Repository
 {
@@ -33,7 +35,27 @@ namespace elearning.src.Shared.Infrastructure.Persistence.Repository
                 var dbContext = scope.ServiceProvider.GetRequiredService<ELearningContext>();
                 IQueryable<TEntity> query = dbContext.Set<TEntity>();
 
-                return query.FirstOrDefault<TEntity>(x => (Reflection.GetObjectProperty(Reflection.GetObjectProperty(x, "Id"), "Value")).ToString() == id.Value);
+                return query.FirstOrDefault<TEntity>(x => (Reflection.GetObjectProperty(Reflection.GetObjectProperty(x, "id"), "Value")).ToString() == id.Value);
+            }
+        }
+
+        public virtual List<TEntity> Find(Criteria criteria)
+        {
+            using (var scope = ScopeFactory.CreateScope())
+            {
+                var dbContext = scope.ServiceProvider.GetRequiredService<ELearningContext>();
+                IQueryable<TEntity> query = dbContext.Set<TEntity>();
+
+                foreach (Criterion criterion in criteria.criterion)
+                {
+                    query = query.Where(x => (Reflection.GetObjectProperty(Reflection.GetObjectProperty(x, criterion.field.Value), "Value")).ToString() == criterion.value.Value);
+                }
+
+                query = query
+                    .Skip((criteria.limit.Value - 1) * criteria.offset.Value)
+                    .Take(criteria.offset.Value);
+
+                return query.ToList();
             }
         }
 
