@@ -1,15 +1,10 @@
-﻿using elearning.src.Shared.Domain;
+﻿using elearning.src.Shared.Infrastructure.Persistence.Repository;
 
 namespace elearning.src.IAM.User.Domain
 {
-	public interface IUserRepository
+	public interface IUserRepository : IRepository<User>
 	{
-		void Add(User user);
-		User Get(UUID id);
 		User FindByEmail(UserEmail email);
 		User FindByEmailAndPassword(UserEmail email, UserHashedPassword password);
-		// TO-DO no funciona como una colección
-		// Mas adelante será Find(Criteria criteria)
-		// Para no violar OCP
 	}
 }
