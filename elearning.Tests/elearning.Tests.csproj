@@ -11,6 +11,7 @@
     <PackageReference Include="NUnit" Version="3.12.0" />
     <PackageReference Include="NUnit3TestAdapter" Version="3.16.1" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.5.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="5.0.17" />
   </ItemGroup>
 
   <ItemGroup>
@@ -38,6 +39,8 @@
     <None Remove="IAM\Token\Infrastructure\" />
     <None Remove="IAM\Token\Infrastructure\Service\" />
     <None Remove="IAM\Token\Infrastructure\Service\Token\" />
+    <None Remove="IAM\User\Application\Query\FindUsersByCriteria\" />
+    <None Remove="Microsoft.AspNetCore.Http.Features" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="IAM\" />
@@ -61,5 +64,6 @@
     <Folder Include="IAM\Token\Infrastructure\" />
     <Folder Include="IAM\Token\Infrastructure\Service\" />
     <Folder Include="IAM\Token\Infrastructure\Service\Token\" />
+    <Folder Include="IAM\User\Application\Query\FindUsersByCriteria\" />
   </ItemGroup>
 </Project>

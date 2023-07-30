@@ -4,7 +4,7 @@ using UserAggregate = elearning.src.IAM.User.Domain.User;
 namespace elearning.src.IAM.User.Application.Query.Response
 {
     public class UserResponseConverter {
-        public UserListResponse Convert(List<UserAggregate> users) {
+        public virtual UserListResponse Convert(List<UserAggregate> users) {
             List<UserResponse> listUserResponse = new List<UserResponse>();
 
             foreach (UserAggregate user in users) {
