@@ -87,7 +87,10 @@
     <Folder Include="src\IAM\User\Infrastructure\Framework\Configure\Startup\Service\" />
     <Folder Include="src\IAM\Token\Infrastructure\Framework\Configure\Startup\Subscriber\" />
     <Folder Include="src\IAM\User\Infrastructure\Framework\Configure\Startup\Subscriber\" />
-    <Folder Include="src\IAM\User\Infrastructure\Framework\Configure\Startup\Subscriber\SyncQuerySubscriber\" />
+    <Folder Include="src\IAM\User\Application\Query\FindById\" />
+    <Folder Include="src\Shared\Infrastructure\Security\Authorization\" />
+    <Folder Include="src\Shared\Infrastructure\Security\Authorization\Exception\" />
+    <Folder Include="src\IAM\User\Application\Query\Exception\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -189,6 +192,9 @@
     <None Remove="src\IAM\User\Infrastructure\Framework\Configure\Startup\Service\" />
     <None Remove="src\IAM\Token\Infrastructure\Framework\Configure\Startup\Subscriber\" />
     <None Remove="src\IAM\User\Infrastructure\Framework\Configure\Startup\Subscriber\" />
-    <None Remove="src\IAM\User\Infrastructure\Framework\Configure\Startup\Subscriber\SyncQuerySubscriber\" />
+    <None Remove="src\IAM\User\Application\Query\FindById\" />
+    <None Remove="src\Shared\Infrastructure\Security\Authentiation\" />
+    <None Remove="src\Shared\Infrastructure\Security\Authorization\Exception\" />
+    <None Remove="src\IAM\User\Application\Query\Exception\" />
   </ItemGroup>
 </Project>

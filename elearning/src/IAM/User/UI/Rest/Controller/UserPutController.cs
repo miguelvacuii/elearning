@@ -1,9 +1,7 @@
 ﻿using elearning.src.IAM.User.Application.Command.SignUp;
-using elearning.src.Shared.Domain;
 using elearning.src.Shared.Domain.Bus.Command;
 using elearning.src.Shared.Infrastructure.Service.JsonApi;
 using elearning.src.Shared.UI.Rest.Controller;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace elearning.src.IAM.User.UI.Rest.Controller

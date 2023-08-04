@@ -2,7 +2,7 @@
 
 namespace elearning.src.IAM.User.Application.Query.Response
 {
-    public class UserResponse
+    public class UserResponse : IResponse
     {
 
         public string id { get; private set; }

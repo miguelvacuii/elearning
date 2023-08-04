@@ -1,26 +1,50 @@
 ﻿using elearning.src.Shared.Domain;
+using elearning.Tests.IAM.User.Domain.Stub;
 using NUnit.Framework;
 
 namespace elearning.Tests.Shared.Domain
 {
+    [TestFixture]
     public class AuthUserTest
     {
+
         [Test]
-        public void ItShouldReturnFalseIfRoleIsNotStudent()
+        public void ItShouldReturnTrueIfRoleIsStudent()
         {
-            Assert.False(AuthUser.IsStudent("role"));
+            AuthUser authUser = new AuthUser(
+                UserIdStub.ByDefault().Value,
+                UserEmailStub.ByDefault().Value,
+                UserFirstNameStub.ByDefault().Value,
+                UserLastNameStub.ByDefault().Value,
+                UserRoleStub.FromValue("student").Value
+            );
+            Assert.True(authUser.IsStudent());
         }
 
         [Test]
-        public void ItShouldReturnFalseIfRoleIsNotTeacher()
+        public void ItShouldReturnTrueIfRoleIsTeacher()
         {
-            Assert.False(AuthUser.IsTeacher("role"));
+            AuthUser authUser = new AuthUser(
+                UserIdStub.ByDefault().Value,
+                UserEmailStub.ByDefault().Value,
+                UserFirstNameStub.ByDefault().Value,
+                UserLastNameStub.ByDefault().Value,
+                UserRoleStub.FromValue("teacher").Value
+            );
+            Assert.True(authUser.IsTeacher());
         }
 
         [Test]
-        public void ItShouldReturnFalseIfRoleIsNotAdministrator()
+        public void ItShouldReturnTrueIfRoleIsAdministrator()
         {
-            Assert.False(AuthUser.IsAdministrator("role"));
+            AuthUser authUser = new AuthUser(
+                UserIdStub.ByDefault().Value,
+                UserEmailStub.ByDefault().Value,
+                UserFirstNameStub.ByDefault().Value,
+                UserLastNameStub.ByDefault().Value,
+                UserRoleStub.FromValue("administrator").Value
+            );
+            Assert.True(authUser.IsAdministrator());
         }
     }
 }

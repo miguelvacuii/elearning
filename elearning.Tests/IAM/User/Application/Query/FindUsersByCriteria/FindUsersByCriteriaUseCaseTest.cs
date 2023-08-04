@@ -38,9 +38,9 @@ namespace elearning.Tests.IAM.User.Application.Query.FindUsersByCriteria
         public void ItShouldFindUser()
         {
             Mock<IUserRepository> userRepository = CreatedAtAndSetupUserRepositoryMock();
-            Mock<UserResponseConverter> userConverter = CreateAndSetupUserResponseForTokenConverter();
+            Mock<UserListResponseConverter> userListResponseConverter = CreateAndSetupUserResponseForTokenConverter();
             FindUsersByCriteriaUseCase findUsersByCriteriaUseCase = new FindUsersByCriteriaUseCase(
-                userRepository.Object, userConverter.Object
+                userRepository.Object, userListResponseConverter.Object
             );
 
             findUsersByCriteriaUseCase.Invoke(
@@ -57,16 +57,16 @@ namespace elearning.Tests.IAM.User.Application.Query.FindUsersByCriteria
         public void ItShouldFindUserAndConvert()
         {
             Mock<IUserRepository> userRepository = CreatedAtAndSetupUserRepositoryMock();
-            Mock<UserResponseConverter> userConverter = CreateAndSetupUserResponseForTokenConverter();
+            Mock<UserListResponseConverter> userListResponseConverter = CreateAndSetupUserResponseForTokenConverter();
             FindUsersByCriteriaUseCase findUsersByCriteriaUseCase = new FindUsersByCriteriaUseCase(
-                userRepository.Object, userConverter.Object
+                userRepository.Object, userListResponseConverter.Object
             );
 
             findUsersByCriteriaUseCase.Invoke(
                listCriterion, listOrder, limit, offset
             );
 
-            userConverter.Verify(
+            userListResponseConverter.Verify(
                 m => m.Convert(It.IsAny<List<UserAggregate>>()),
                 Times.AtLeastOnce()
             );
@@ -79,11 +79,11 @@ namespace elearning.Tests.IAM.User.Application.Query.FindUsersByCriteria
             return userRepository;
         }
 
-        private Mock<UserResponseConverter> CreateAndSetupUserResponseForTokenConverter()
+        private Mock<UserListResponseConverter> CreateAndSetupUserResponseForTokenConverter()
         {
-            Mock<UserResponseConverter> userConverter = new Mock<UserResponseConverter>();
-            userConverter.Setup(m => m.Convert(It.IsAny<List<UserAggregate>>())).Verifiable();
-            return userConverter;
+            Mock<UserListResponseConverter> userListResponseConverter = new Mock<UserListResponseConverter>();
+            userListResponseConverter.Setup(m => m.Convert(It.IsAny<List<UserAggregate>>())).Verifiable();
+            return userListResponseConverter;
         }
     }
 }
