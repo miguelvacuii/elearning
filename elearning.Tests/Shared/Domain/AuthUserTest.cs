@@ -1,26 +1,60 @@
 ﻿using elearning.src.Shared.Domain;
+using elearning.src.Shared.Domain.Exception;
+using elearning.Tests.IAM.User.Domain.Stub;
 using NUnit.Framework;
 
 namespace elearning.Tests.Shared.Domain
 {
+    [TestFixture]
     public class AuthUserTest
     {
+        AuthUser authUser;
+
         [Test]
-        public void ItShouldReturnFalseIfRoleIsNotStudent()
+        public void ItShouldReturnTrueIfRoleIsStudent()
         {
-            Assert.False(AuthUser.IsStudent("role"));
+            authUser = CreateAuthUser(AuthUser.ROLE_STUDENT);
+            Assert.True(authUser.IsStudent());
         }
 
         [Test]
-        public void ItShouldReturnFalseIfRoleIsNotTeacher()
+        public void ItShouldReturnTrueIfRoleIsTeacher()
         {
-            Assert.False(AuthUser.IsTeacher("role"));
+            authUser = CreateAuthUser(AuthUser.ROLE_TEACHER);
+            Assert.True(authUser.IsTeacher());
         }
 
         [Test]
-        public void ItShouldReturnFalseIfRoleIsNotAdministrator()
+        public void ItShouldReturnTrueIfRoleIsAdministrator()
         {
-            Assert.False(AuthUser.IsAdministrator("role"));
+            authUser = CreateAuthUser(AuthUser.ROLE_ADMINISTRATOR);
+            Assert.True(authUser.IsAdministrator());
+        }
+
+        [Test]
+        [TestCase(AuthUser.ROLE_STUDENT)]
+        [TestCase(AuthUser.ROLE_TEACHER)]
+        [TestCase(AuthUser.ROLE_ADMINISTRATOR)]
+        public void ItShouldReturnTrueIfRoleIsContainInRoleList(string role)
+        {
+            Assert.True(AuthUser.Contains(role));
+        }
+
+        [Test]
+        public void ItShouldReturnFalseIfRoleIsNotContainInRoleList()
+        {
+            Assert.False(AuthUser.Contains("role"));
+        }
+
+        private AuthUser CreateAuthUser(string role)
+        {
+            return new AuthUser(
+                UserIdStub.ByDefault().Value,
+                UserEmailStub.ByDefault().Value,
+                UserFirstNameStub.ByDefault().Value,
+                UserLastNameStub.ByDefault().Value,
+                UserRoleStub.FromValue(role).Value
+            );
         }
     }
 }

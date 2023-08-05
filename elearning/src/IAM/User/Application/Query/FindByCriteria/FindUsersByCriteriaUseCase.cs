@@ -9,21 +9,21 @@ namespace elearning.src.IAM.User.Application.Query.FindByCriteria
     public class FindUsersByCriteriaUseCase
     {
         private readonly IUserRepository userRepository;
-        private readonly UserResponseConverter userResponseConverter;
+        private readonly UserListResponseConverter userListResponseConverter;
 
         public FindUsersByCriteriaUseCase(
             IUserRepository userRepository,
-            UserResponseConverter userResponseConverter
+            UserListResponseConverter userListResponseConverter
         ) {
             this.userRepository = userRepository;
-            this.userResponseConverter = userResponseConverter;
+            this.userListResponseConverter = userListResponseConverter;
         }
 
         public virtual UserListResponse Invoke(List<Criterion> criterion, List<Order> order, Limit limit, Offset offset)
         {
             Criteria criteria = Criteria.Create(criterion, order, limit, offset);
             List<UserAggregate> users = userRepository.Find(criteria);
-            return userResponseConverter.Convert(users);
+            return userListResponseConverter.Convert(users);
         }
     }
 }

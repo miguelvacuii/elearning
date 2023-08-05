@@ -13,11 +13,11 @@ namespace elearning.src.Shared.Domain
 			ROLE_ADMINISTRATOR
 		};
 
-		public string id { get; }
-		public string email { get; }
-		public string firstName { get; }
-		public string lastName { get; }
-		public string role { get; }
+		public string id { get; private set; }
+		public string email { get; private set; }
+		public string firstName { get; private set; }
+		public string lastName { get; private set; }
+		public string role { get; private set; }
 
 		public AuthUser(
 			string id,
@@ -34,18 +34,18 @@ namespace elearning.src.Shared.Domain
 			this.role = role;
 		}
 
-		public static bool IsStudent(string role)
+		public bool IsStudent()
 		{
 			return role == ROLE_STUDENT;
 		}
 
-		public static bool IsTeacher(string role)
+		public bool IsTeacher()
 		{
 
 			return role == ROLE_TEACHER;
 		}
 
-		public static bool IsAdministrator(string role)
+		public bool IsAdministrator()
 		{
 			return role == ROLE_ADMINISTRATOR;
 		}

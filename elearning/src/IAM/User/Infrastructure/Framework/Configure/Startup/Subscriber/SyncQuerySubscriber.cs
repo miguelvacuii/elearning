@@ -1,4 +1,5 @@
 ﻿using elearning.src.IAM.User.Application.Query.FindByCriteria;
+using elearning.src.IAM.User.Application.Query.FindById;
 using elearning.src.IAM.User.Application.Query.FindUserByCredentials;
 using elearning.src.Shared.Domain.Bus.Query;
 using elearning.src.Shared.Infrastructure.Framework.Startup.Subscriber;
@@ -18,6 +19,12 @@ namespace elearning.src.IAM.User.Infrastructure.Framework.Configure.Startup.Subs
 
             FindUsersByCriteriaQueryHandler findUsersByCriteriaQueryHandler = context.RequestServices.GetRequiredService<FindUsersByCriteriaQueryHandler>();
             queryBus.Subscribe(findUsersByCriteriaQueryHandler);
+
+            FindUserByIdQueryHandler findUserByIdQueryHandler = context.RequestServices.GetRequiredService<FindUserByIdQueryHandler>();
+            queryBus.Subscribe(findUserByIdQueryHandler);
+
+            FindUserByIdAuthorization findUserByIdAuthorization = context.RequestServices.GetRequiredService<FindUserByIdAuthorization>();
+            queryBus.Authorize(findUserByIdAuthorization);
         }
     }
 }
