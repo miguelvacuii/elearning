@@ -19,7 +19,7 @@ namespace elearning.src.IAM.User.Application.Query.FindById
             this.userResponseConverter = userResponseConverter;
         }
 
-        internal IResponse Invoke(UserId userId)
+        public virtual IResponse Invoke(UserId userId)
         {
             UserAggregate user = userRepository.Get(userId);
             if (user == null) {

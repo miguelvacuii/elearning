@@ -12,6 +12,7 @@
     <PackageReference Include="NUnit3TestAdapter" Version="3.16.1" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.5.0" />
     <PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="5.0.17" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.1.1" />
   </ItemGroup>
 
   <ItemGroup>
@@ -41,6 +42,8 @@
     <None Remove="IAM\Token\Infrastructure\Service\Token\" />
     <None Remove="IAM\User\Application\Query\FindUsersByCriteria\" />
     <None Remove="Microsoft.AspNetCore.Http.Features" />
+    <None Remove="IAM\User\Application\Query\FindUserById\" />
+    <None Remove="Microsoft.EntityFrameworkCore" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="IAM\" />
@@ -65,5 +68,6 @@
     <Folder Include="IAM\Token\Infrastructure\Service\" />
     <Folder Include="IAM\Token\Infrastructure\Service\Token\" />
     <Folder Include="IAM\User\Application\Query\FindUsersByCriteria\" />
+    <Folder Include="IAM\User\Application\Query\FindUserById\" />
   </ItemGroup>
 </Project>

@@ -13,7 +13,7 @@ namespace elearning.src.Shared.Infrastructure.Security.Authentication
             this.decoder = decoder;
         }
 
-        public AuthUser User()
+        public virtual AuthUser User()
         {
             return decoder.Decode();
 

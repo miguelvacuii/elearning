@@ -16,7 +16,7 @@ namespace elearning.src.IAM.User.Application.Query.FindById
             this.oAuth = oAuth;
         }
 
-        public void Authorize(dynamic request) {
+        public virtual void Authorize(dynamic request) {
 
             FindUserByIdQuery findUserByIdQuery = request as FindUserByIdQuery;
             AuthUser user = oAuth.User();
