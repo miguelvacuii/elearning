@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using elearning.src.Shared.Domain.Bus.Query;
+using elearning.src.Shared.Infrastructure.Helper;
 using elearning.src.Shared.Infrastructure.Security.Authorization;
 
 namespace elearning.src.Shared.Infrastructure.Bus.Query
@@ -18,21 +19,21 @@ namespace elearning.src.Shared.Infrastructure.Bus.Query
         // TO-DO interfaz o middleware
         public void Subscribe(IQueryHandler queryHandler)
         {
-            string queryHandlerFullName = GetObjectFullName(queryHandler);
+            string queryHandlerFullName = ObjectProperties.GetObjectFullName(queryHandler);
             queryHandlers.Add(queryHandlerFullName, queryHandler);
         }
 
         // TO-DO interfaz o middleware
         public void Authorize(IAuthorization authorization)
         {
-            string authorizationHandlerFullName = GetObjectFullName(authorization);
+            string authorizationHandlerFullName = ObjectProperties.GetObjectFullName(authorization);
             authorizationList.Add(authorizationHandlerFullName, authorization);
         }
 
         public IResponse Ask(IQuery query)
         {
-            string requestNamespace = GetObjectNamespace(query);
-            string requestName = GetObjectName(query);
+            string requestNamespace = ObjectProperties.GetObjectNamespace(query);
+            string requestName = ObjectProperties.GetObjectName(query);
             string queryHandlerName = requestName.Replace("Query", "QueryHandler");
             string queryHandlerFullName = requestNamespace + "." + queryHandlerName;
 
@@ -46,22 +47,6 @@ namespace elearning.src.Shared.Infrastructure.Bus.Query
 
             IQueryHandler queryHandler = queryHandlers[queryHandlerFullName];
             return queryHandler.Handle(query);
-        }
-
-        // TO-DO refactorizar porque será código repetitivo al crer más commands
-        public static string GetObjectFullName(object obj)
-        {
-            return obj.GetType().ToString();
-        }
-
-        public static string GetObjectNamespace(object obj)
-        {
-            return obj.GetType().Namespace;
-        }
-
-        public static string GetObjectName(object obj)
-        {
-            return obj.GetType().Name;
         }
     }
 }
