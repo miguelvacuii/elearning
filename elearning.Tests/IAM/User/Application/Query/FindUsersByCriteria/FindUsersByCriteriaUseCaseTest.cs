@@ -35,7 +35,7 @@ namespace elearning.Tests.IAM.User.Application.Query.FindUsersByCriteria
         }
 
         [Test]
-        public void ItShouldFindUser()
+        public void ItShouldFindUsers()
         {
             Mock<IUserRepository> userRepository = CreatedAtAndSetupUserRepositoryMock();
             Mock<UserListResponseConverter> userListResponseConverter = CreateAndSetupUserResponseForTokenConverter();
@@ -54,7 +54,7 @@ namespace elearning.Tests.IAM.User.Application.Query.FindUsersByCriteria
         }
 
         [Test]
-        public void ItShouldFindUserAndConvert()
+        public void ItShouldFindUsersAndConvertThem()
         {
             Mock<IUserRepository> userRepository = CreatedAtAndSetupUserRepositoryMock();
             Mock<UserListResponseConverter> userListResponseConverter = CreateAndSetupUserResponseForTokenConverter();
@@ -81,7 +81,8 @@ namespace elearning.Tests.IAM.User.Application.Query.FindUsersByCriteria
 
         private Mock<UserListResponseConverter> CreateAndSetupUserResponseForTokenConverter()
         {
-            Mock<UserListResponseConverter> userListResponseConverter = new Mock<UserListResponseConverter>();
+            Mock<UserResponseConverter> userResponseConverter = new Mock<UserResponseConverter>();
+            Mock<UserListResponseConverter> userListResponseConverter = new Mock<UserListResponseConverter>(userResponseConverter.Object);
             userListResponseConverter.Setup(m => m.Convert(It.IsAny<List<UserAggregate>>())).Verifiable();
             return userListResponseConverter;
         }

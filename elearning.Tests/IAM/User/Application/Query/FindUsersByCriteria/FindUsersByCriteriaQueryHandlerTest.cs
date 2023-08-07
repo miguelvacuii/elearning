@@ -48,7 +48,8 @@ namespace elearning.Tests.IAM.User.Application.Query.FindUsersByCriteria
         private Mock<FindUsersByCriteriaUseCase> CreateAndSetupFindUsersByCriteriaUseCaseMock()
         {
             Mock<IUserRepository> userRepository = new Mock<IUserRepository>();
-            Mock<UserListResponseConverter> userListResponseConverter = new Mock<UserListResponseConverter>();
+            Mock<UserResponseConverter> userResponseConverter = new Mock<UserResponseConverter>();
+            Mock<UserListResponseConverter> userListResponseConverter = new Mock<UserListResponseConverter>(userResponseConverter.Object);
             Mock<FindUsersByCriteriaUseCase> findUserByCriteriaUseCase = new Mock<FindUsersByCriteriaUseCase>(
                 userRepository.Object, userListResponseConverter.Object
             );
