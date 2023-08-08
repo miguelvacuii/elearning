@@ -1,33 +1,31 @@
 ﻿using System.Collections.Generic;
 using elearning.src.Shared.Domain.Bus.Query;
+using elearning.src.Shared.Domain.Bus.Query.Middleware;
+using elearning.src.Shared.Infrastructure.Bus.Query.Middleware;
 using elearning.src.Shared.Infrastructure.Helper;
-using elearning.src.Shared.Infrastructure.Security.Authorization;
 
 namespace elearning.src.Shared.Infrastructure.Bus.Query
 {
     public class QueryBus : IQueryBus
     {
         private Dictionary<string, IQueryHandler> queryHandlers;
-        private Dictionary<string, IAuthorization> authorizationList;
+        private List<IMiddlewareHandler> middlewareHandlers;
 
         public QueryBus()
         {
             queryHandlers = new Dictionary<string, IQueryHandler>();
-            authorizationList = new Dictionary<string, IAuthorization>();
+            middlewareHandlers = new List<IMiddlewareHandler>();
         }
 
-        // TO-DO interfaz o middleware
         public void Subscribe(IQueryHandler queryHandler)
         {
             string queryHandlerFullName = ObjectProperties.GetObjectFullName(queryHandler);
             queryHandlers.Add(queryHandlerFullName, queryHandler);
         }
 
-        // TO-DO interfaz o middleware
-        public void Authorize(IAuthorization authorization)
+        public void AddMiddleware(IMiddlewareHandler middlewareHandler)
         {
-            string authorizationHandlerFullName = ObjectProperties.GetObjectFullName(authorization);
-            authorizationList.Add(authorizationHandlerFullName, authorization);
+            middlewareHandlers.Add(middlewareHandler);
         }
 
         public IResponse Ask(IQuery query)
@@ -37,16 +35,22 @@ namespace elearning.src.Shared.Infrastructure.Bus.Query
             string queryHandlerName = requestName.Replace("Query", "QueryHandler");
             string queryHandlerFullName = requestNamespace + "." + queryHandlerName;
 
-            string authorizationHandlerName = requestName.Replace("Query", "Authorization");
-            string authorizationFullName = requestNamespace + "." + authorizationHandlerName;
+            IQueryHandler queryHandler = queryHandlers[queryHandlerFullName];
+            IMiddlewareHandler middlewareHandler = new QueryHandlerMiddleware(queryHandler);
+            middlewareHandler = LoadHandlers(middlewareHandler);
 
-            if (authorizationList.ContainsKey(authorizationFullName)) {
-                IAuthorization authorization = authorizationList[authorizationFullName];
-                authorization.Authorize(query);
+            return middlewareHandler.Handle(query);
+        }
+
+        private IMiddlewareHandler LoadHandlers(IMiddlewareHandler middlewareHandler)
+        {
+            foreach (IMiddlewareHandler handler in middlewareHandlers)
+            {
+                handler.SetNext(middlewareHandler);
+                middlewareHandler = handler;
             }
 
-            IQueryHandler queryHandler = queryHandlers[queryHandlerFullName];
-            return queryHandler.Handle(query);
+            return middlewareHandler;
         }
     }
 }

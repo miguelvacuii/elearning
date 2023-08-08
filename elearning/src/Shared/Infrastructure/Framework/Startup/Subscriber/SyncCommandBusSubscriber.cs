@@ -11,6 +11,7 @@ namespace elearning.src.Shared.Infrastructure.Framework.Startup.Subscriber
         public void Setup(HttpContext context)
         {
             ICommandBus commandBus = context.RequestServices.GetRequiredService<ICommandBus>();
+            commandBus.AddMiddleware(context.RequestServices.GetRequiredService<CommandAuthorizationMiddleware>());
             commandBus.AddMiddleware(context.RequestServices.GetRequiredService<TransactionMiddleware>());
             commandBus.AddMiddleware(context.RequestServices.GetRequiredService<EventDispatcherSyncMiddleware>());
         }

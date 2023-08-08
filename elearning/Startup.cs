@@ -44,7 +44,7 @@ namespace elearning
                 (new src.Shared.Infrastructure.Framework.Startup.Subscriber.SyncCommandBusSubscriber()).Setup(context);
 
                 (new src.IAM.User.Infrastructure.Framework.Configure.Startup.Subscriber.SyncCommandSubscriber()).Setup(context);
-                (new src.IAM.User.Infrastructure.Framework.Configure.Startup.Subscriber.SyncQuerySubscriber()).Setup(context);
+                (new src.IAM.User.Infrastructure.Framework.Configure.Startup.Subscriber.QuerySubscriber()).Setup(context);
                 (new src.IAM.User.Infrastructure.Framework.Configure.Startup.Subscriber.SyncEventSubscriber()).Setup(context);
 
                 (new src.IAM.Token.Infrastructure.Framework.Configure.Startup.Subscriber.SyncCommandSubscriber()).Setup(context);
