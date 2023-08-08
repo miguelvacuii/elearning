@@ -4,21 +4,19 @@ using UserAggregate = elearning.src.IAM.User.Domain.User;
 namespace elearning.src.IAM.User.Application.Query.Response
 {
     public class UserListResponseConverter {
+
+        private readonly UserResponseConverter userResponseConverter;
+
+        public UserListResponseConverter(UserResponseConverter userResponseConverter) {
+            this.userResponseConverter = userResponseConverter;
+        }
         public virtual UserListResponse Convert(List<UserAggregate> users) {
             List<UserResponse> listUserResponse = new List<UserResponse>();
 
             foreach (UserAggregate user in users) {
                 listUserResponse.Add(
-                        new UserResponse(
-                        user.id.Value,
-                        user.email.Value,
-                        user.firstName.Value,
-                        user.lastName.Value,
-                        user.role.Value,
-                        user.createdAt.Value.ToString(),
-                        user.updatedAt.Value.ToString()
-                    )
-                );
+                        userResponseConverter.Convert(user)
+                ); ;
             }
             return new UserListResponse(listUserResponse);
         }

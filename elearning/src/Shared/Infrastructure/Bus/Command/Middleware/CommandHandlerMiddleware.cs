@@ -1,5 +1,4 @@
 ﻿using elearning.src.Shared.Domain.Bus.Command;
-using elearning.src.Shared.Infrastructure.Bus.Command.Middleware;
 
 namespace elearning.src.Shared.Infrastructure.Bus.Command.Middleware
 {

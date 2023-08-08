@@ -91,6 +91,8 @@
     <Folder Include="src\Shared\Infrastructure\Security\Authorization\" />
     <Folder Include="src\Shared\Infrastructure\Security\Authorization\Exception\" />
     <Folder Include="src\IAM\User\Application\Query\Exception\" />
+    <Folder Include="src\Shared\Infrastructure\Bus\Query\Middleware\" />
+    <Folder Include="src\Shared\Domain\Bus\Query\Middleware\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -196,5 +198,7 @@
     <None Remove="src\Shared\Infrastructure\Security\Authentiation\" />
     <None Remove="src\Shared\Infrastructure\Security\Authorization\Exception\" />
     <None Remove="src\IAM\User\Application\Query\Exception\" />
+    <None Remove="src\Shared\Infrastructure\Bus\Query\Middleware\" />
+    <None Remove="src\Shared\Domain\Bus\Query\Middleware\" />
   </ItemGroup>
 </Project>

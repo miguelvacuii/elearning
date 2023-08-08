@@ -8,7 +8,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace elearning.src.IAM.User.Infrastructure.Framework.Configure.Startup.Subscriber
 {
-    public class SyncQuerySubscriber : ISubscriber
+    public class QuerySubscriber : ISubscriber
     {
         public void Setup(HttpContext context)
         {
@@ -22,9 +22,6 @@ namespace elearning.src.IAM.User.Infrastructure.Framework.Configure.Startup.Subs
 
             FindUserByIdQueryHandler findUserByIdQueryHandler = context.RequestServices.GetRequiredService<FindUserByIdQueryHandler>();
             queryBus.Subscribe(findUserByIdQueryHandler);
-
-            FindUserByIdAuthorization findUserByIdAuthorization = context.RequestServices.GetRequiredService<FindUserByIdAuthorization>();
-            queryBus.Authorize(findUserByIdAuthorization);
         }
     }
 }

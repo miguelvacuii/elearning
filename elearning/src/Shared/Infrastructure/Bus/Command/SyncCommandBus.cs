@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using elearning.src.Shared.Infrastructure.Bus.Command.Middleware;
 using elearning.src.Shared.Domain.Bus.Command;
 using elearning.src.Shared.Domain.Bus.Command.Middleware;
+using elearning.src.Shared.Infrastructure.Helper;
 
 namespace elearning.src.Shared.Infrastructure.Bus.Command
 {
@@ -15,12 +16,11 @@ namespace elearning.src.Shared.Infrastructure.Bus.Command
         {
             commandHandlers = new Dictionary<string, ICommandHandler>();
             middlewareHandlers = new List<IMiddlewareHandler>();
-
         }
 
         public void Subscribe(ICommandHandler commandHandler)
         {
-            string commandhandlerFullName = GetObjectFullName(commandHandler);
+            string commandhandlerFullName = ObjectProperties.GetObjectFullName(commandHandler);
             commandHandlers.Add(commandhandlerFullName, commandHandler);
         }
 
@@ -31,8 +31,8 @@ namespace elearning.src.Shared.Infrastructure.Bus.Command
 
         public void Dispatch(ICommand command)
         {
-            string requestNamespace = GetObjectNamespace(command);
-            string requestName = GetObjectName(command);
+            string requestNamespace = ObjectProperties.GetObjectNamespace(command);
+            string requestName = ObjectProperties.GetObjectName(command);
             string commandHandlerName = requestName.Replace("Command", "CommandHandler");
             string commandHandlerFullName = requestNamespace + "." + commandHandlerName;
 
@@ -52,22 +52,6 @@ namespace elearning.src.Shared.Infrastructure.Bus.Command
             }
 
             return middlewareHandler;
-        }
-
-        // TO-DO refactorizar porque será código repetitivo al crer más commands
-        public static string GetObjectFullName(object obj)
-        {
-            return obj.GetType().ToString();
-        }
-
-        public static string GetObjectNamespace(object obj)
-        {
-            return obj.GetType().Namespace;
-        }
-
-        public static string GetObjectName(object obj)
-        {
-            return obj.GetType().Name;
         }
     }
 }

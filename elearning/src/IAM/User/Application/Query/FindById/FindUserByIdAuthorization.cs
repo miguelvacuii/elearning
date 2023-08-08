@@ -1,6 +1,7 @@
 ﻿using elearning.src.IAM.User.Domain;
 using elearning.src.IAM.User.Domain.Service.Exception;
 using elearning.src.Shared.Domain;
+using elearning.src.Shared.Domain.Bus.Query;
 using elearning.src.Shared.Infrastructure.Security.Authentication;
 using elearning.src.Shared.Infrastructure.Security.Authorization;
 using elearning.src.Shared.Infrastructure.Security.Authorization.Exception;
