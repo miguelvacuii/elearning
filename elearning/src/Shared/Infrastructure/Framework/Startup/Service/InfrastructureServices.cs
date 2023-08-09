@@ -12,7 +12,6 @@ using elearning.src.Shared.Infrastructure.Persistence.Context;
 using elearning.src.Shared.Infrastructure.Persistence.Repository;
 using elearning.src.Shared.Infrastructure.Security.Authentication;
 using elearning.src.Shared.Infrastructure.Security.Authentication.JWT;
-using elearning.src.Shared.Infrastructure.Security.Authorization;
 using elearning.src.Shared.Infrastructure.Service.Hashing;
 using elearning.src.Shared.Infrastructure.Service.JsonApi;
 using elearning.src.Shared.Infrastructure.Service.Mailer;

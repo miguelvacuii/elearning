@@ -42,9 +42,10 @@ namespace elearning
             app.Use((context, next) =>
             {
                 (new src.Shared.Infrastructure.Framework.Startup.Subscriber.SyncCommandBusSubscriber()).Setup(context);
+                (new src.Shared.Infrastructure.Framework.Startup.Subscriber.QueryBusSubscriber()).Setup(context);
 
                 (new src.IAM.User.Infrastructure.Framework.Configure.Startup.Subscriber.SyncCommandSubscriber()).Setup(context);
-                (new src.IAM.User.Infrastructure.Framework.Configure.Startup.Subscriber.QuerySubscriber()).Setup(context);
+                (new src.IAM.User.Infrastructure.Framework.Configure.Startup.Subscriber.QueryBusSubscriber()).Setup(context);
                 (new src.IAM.User.Infrastructure.Framework.Configure.Startup.Subscriber.SyncEventSubscriber()).Setup(context);
 
                 (new src.IAM.Token.Infrastructure.Framework.Configure.Startup.Subscriber.SyncCommandSubscriber()).Setup(context);

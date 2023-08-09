@@ -8,7 +8,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace elearning.src.IAM.User.Infrastructure.Framework.Configure.Startup.Subscriber
 {
-    public class QuerySubscriber : ISubscriber
+    public class QueryBusSubscriber : ISubscriber
     {
         public void Setup(HttpContext context)
         {

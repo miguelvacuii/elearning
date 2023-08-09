@@ -9,8 +9,8 @@ namespace elearning.src.Shared.Infrastructure.Framework.Startup.Subscriber
     {
         public void Setup(HttpContext context)
         {
-            IQueryBus QueryBus = context.RequestServices.GetRequiredService<IQueryBus>();
-            QueryBus.AddMiddleware(context.RequestServices.GetRequiredService<QueryAuthorizationMiddleware>());
+            IQueryBus queryBus = context.RequestServices.GetRequiredService<IQueryBus>();
+            queryBus.AddMiddleware(context.RequestServices.GetRequiredService<QueryAuthorizationMiddleware>());
         }
     }
 }
