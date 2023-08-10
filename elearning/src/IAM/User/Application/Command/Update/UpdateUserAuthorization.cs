@@ -3,30 +3,23 @@ using elearning.src.IAM.User.Domain.Exception;
 using elearning.src.Shared.Domain;
 using elearning.src.Shared.Infrastructure.Security.Authentication;
 using elearning.src.Shared.Infrastructure.Security.Authorization;
-using elearning.src.Shared.Infrastructure.Security.Authorization.Exception;
 
-namespace elearning.src.IAM.User.Application.Query.FindById
+namespace elearning.src.IAM.User.Application.Command.Update
 {
-    public class FindUserByIdAuthorization : IQueryAuthorization
+    public class UpdateUserAuthorization : ICommandAuthorization
     {
         private OAuth oAuth;
 
-        public FindUserByIdAuthorization(OAuth oAuth)
+        public UpdateUserAuthorization(OAuth oAuth)
         {
             this.oAuth = oAuth;
         }
 
         public virtual void Authorize(dynamic request) {
 
-            FindUserByIdQuery findUserByIdQuery = request as FindUserByIdQuery;
+            UpdateUserCommand updateUserCommand = request as UpdateUserCommand;
             AuthUser user = oAuth.User();
-            UserRole role = new UserRole(user.role);
-            UserId id = new UserId(findUserByIdQuery.id);
-
-            if (!user.IsStudent())
-            {
-                throw UnauthorizedException.FromRole(role);
-            }
+            UserId id = new UserId(updateUserCommand.id);
 
             if (id.Value != user.id) {
                 throw UserAuthorizationException.FromId(id);

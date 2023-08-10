@@ -8,7 +8,7 @@ using elearning.Tests.IAM.User.Domain.Stub;
 using Moq;
 using NUnit.Framework;
 
-namespace elearning.Tests.IAM.User.Application.Command
+namespace elearning.Tests.IAM.User.Application.Command.SignUp
 {
     [TestFixture]
     public class SignUpUserCommandHandlerTest

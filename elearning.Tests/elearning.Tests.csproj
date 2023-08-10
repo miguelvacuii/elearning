@@ -44,6 +44,7 @@
     <None Remove="Microsoft.AspNetCore.Http.Features" />
     <None Remove="IAM\User\Application\Query\FindUserById\" />
     <None Remove="Microsoft.EntityFrameworkCore" />
+    <None Remove="IAM\User\Application\Command\Update\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="IAM\" />
@@ -69,5 +70,6 @@
     <Folder Include="IAM\Token\Infrastructure\Service\Token\" />
     <Folder Include="IAM\User\Application\Query\FindUsersByCriteria\" />
     <Folder Include="IAM\User\Application\Query\FindUserById\" />
+    <Folder Include="IAM\User\Application\Command\Update\" />
   </ItemGroup>
 </Project>

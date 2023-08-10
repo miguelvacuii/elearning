@@ -1,7 +1,6 @@
-﻿using elearning.src.IAM.User.Domain;
-using elearning.src.Shared.Domain.Exception;
+﻿using elearning.src.Shared.Domain.Exception;
 
-namespace elearning.src.IAM.User.Application.Query.Exception
+namespace elearning.src.IAM.User.Domain.Exception
 {
     public class UserNotFoundException : ResourceNotFoundException
     {

@@ -90,9 +90,10 @@
     <Folder Include="src\IAM\User\Application\Query\FindById\" />
     <Folder Include="src\Shared\Infrastructure\Security\Authorization\" />
     <Folder Include="src\Shared\Infrastructure\Security\Authorization\Exception\" />
-    <Folder Include="src\IAM\User\Application\Query\Exception\" />
     <Folder Include="src\Shared\Infrastructure\Bus\Query\Middleware\" />
     <Folder Include="src\Shared\Domain\Bus\Query\Middleware\" />
+    <Folder Include="src\IAM\User\Application\Command\Update\" />
+    <Folder Include="src\IAM\User\Domain\Exception\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -197,8 +198,9 @@
     <None Remove="src\IAM\User\Application\Query\FindById\" />
     <None Remove="src\Shared\Infrastructure\Security\Authentiation\" />
     <None Remove="src\Shared\Infrastructure\Security\Authorization\Exception\" />
-    <None Remove="src\IAM\User\Application\Query\Exception\" />
     <None Remove="src\Shared\Infrastructure\Bus\Query\Middleware\" />
     <None Remove="src\Shared\Domain\Bus\Query\Middleware\" />
+    <None Remove="src\IAM\User\Application\Command\Update\" />
+    <None Remove="src\IAM\User\Domain\Exception\" />
   </ItemGroup>
 </Project>

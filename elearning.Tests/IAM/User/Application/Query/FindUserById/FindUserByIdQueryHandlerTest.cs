@@ -51,8 +51,6 @@ namespace elearning.Tests.IAM.User.Application.Query.FindUserById
             );
         }
 
-
-
         private Mock<FindUserByIdUseCase> SetUpFindUserByIdUseCaseMock(
             Mock<IUserRepository> userRepository,
             Mock<UserResponseConverter> userResponseConverter

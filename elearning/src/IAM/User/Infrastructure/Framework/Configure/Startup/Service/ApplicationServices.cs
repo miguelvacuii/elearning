@@ -1,4 +1,5 @@
 ﻿using elearning.src.IAM.User.Application.Command.SignUp;
+using elearning.src.IAM.User.Application.Command.Update;
 using elearning.src.IAM.User.Application.Event;
 using elearning.src.IAM.User.Application.Query.FindByCriteria;
 using elearning.src.IAM.User.Application.Query.FindById;
@@ -18,6 +19,10 @@ namespace elearning.src.IAM.User.Infrastructure.Framework.Configure.Startup.Serv
             services.AddScoped<SignUpUserUseCase>();
             services.AddScoped<SendWelcomeEmailWhenUserSignedUpEventHandler>();
 
+            services.AddScoped<ICommandAuthorization, UpdateUserAuthorization>();
+            services.AddScoped<UpdateUserCommandHandler>();
+            services.AddScoped<UpdateUserUseCase>();
+
             services.AddScoped<FindUserByCredentialsQueryHandler>();
             services.AddScoped<FindUserByCredentialsUseCase>();
             services.AddScoped<UserResponseForTokenConverter>();
@@ -26,7 +31,7 @@ namespace elearning.src.IAM.User.Infrastructure.Framework.Configure.Startup.Serv
             services.AddScoped<FindUsersByCriteriaUseCase>();
             services.AddScoped<UserListResponseConverter>();
 
-            services.AddScoped<IAuthorization, FindUserByIdAuthorization>();
+            services.AddScoped<IQueryAuthorization, FindUserByIdAuthorization>();
             services.AddScoped<FindUserByIdQueryHandler>();
             services.AddScoped<FindUserByIdUseCase>();
             services.AddScoped<UserResponseConverter>();

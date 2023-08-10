@@ -36,7 +36,7 @@ namespace elearning.src.IAM.User.Domain
 			this.updatedAt = updatedAt;
 		}
 
-		public static User SignUp(
+        public static User SignUp(
 			UserId id,
 			UserEmail email,
 			UserFirstName firstName,
@@ -76,5 +76,23 @@ namespace elearning.src.IAM.User.Domain
 
 			return user;
 		}
+
+		public void Update(UserFirstName newFirstName, UserLastName newLastName) {
+			this.firstName = newFirstName;
+			this.lastName = newLastName;
+			this.updatedAt = new UserUpdatedAt(DateTime.Now);
+
+			this.Record(
+   				new UserUpdatedEvent(
+   					this.id.Value,
+						new Dictionary<string, string>()
+						{
+							["first_name"] = this.firstName.Value,
+							["last_name"] = this.lastName.Value,
+							["updated_at"] = this.updatedAt.Value.ToString(),
+						}
+					)
+			);
+        }
 	}
 }

@@ -8,7 +8,7 @@ using NUnit.Framework;
 using elearning.src.Shared.Domain.Bus.Event;
 using System.Collections.Generic;
 
-namespace elearning.Tests.IAM.User.Application.Command
+namespace elearning.Tests.IAM.User.Application.Command.SignUp
 {
     [TestFixture]
     public class SignUpUserUseCaseTest

@@ -7,9 +7,9 @@ namespace elearning.src.Shared.Infrastructure.Bus.Command.Middleware
 {
     public class CommandAuthorizationMiddleware : MiddlewareHandler
     {
-        private readonly IAuthorization authorization;
+        private readonly ICommandAuthorization authorization;
 
-        public CommandAuthorizationMiddleware(IAuthorization authorization)
+        public CommandAuthorizationMiddleware(ICommandAuthorization authorization)
         {
             this.authorization = authorization;
         }

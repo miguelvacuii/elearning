@@ -11,12 +11,12 @@ namespace elearning.Tests.IAM.User.Application.Query.FindUsersByCriteria
 {
     [TestFixture]
     public class FindUsersByCriteriaUseCaseTest{
-        Criterion criterion;
-        List<Criterion> listCriterion;
-        Order order;
-        List<Order> listOrder;
-        Limit limit;
-        Offset offset;
+        private Criterion criterion;
+        private List<Criterion> listCriterion;
+        private Order order;
+        private List<Order> listOrder;
+        private Limit limit;
+        private Offset offset;
 
         [SetUp]
         public void Setup()

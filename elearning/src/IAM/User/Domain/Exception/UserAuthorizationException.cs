@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace elearning.src.IAM.User.Domain.Service.Exception
+namespace elearning.src.IAM.User.Domain.Exception
 {
     public class UserAuthorizationException : ValidationException
     {

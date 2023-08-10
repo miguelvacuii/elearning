@@ -6,9 +6,9 @@ using elearning.src.Shared.Infrastructure.Security.Authorization;
 namespace elearning.src.Shared.Infrastructure.Bus.Query.Middleware
 {
     public class QueryAuthorizationMiddleware : MiddlewareHandler {
-        private readonly IAuthorization authorization;
+        private readonly IQueryAuthorization authorization;
 
-        public QueryAuthorizationMiddleware(IAuthorization authorization) {
+        public QueryAuthorizationMiddleware(IQueryAuthorization authorization) {
             this.authorization = authorization;
         }
 
