@@ -2,7 +2,7 @@
 using elearning.src.IAM.User.Application.Query.Response;
 using elearning.src.IAM.User.Domain;
 using elearning.src.IAM.User.Application.Query.FindById;
-using elearning.src.IAM.User.Application.Query.Exception;
+using elearning.src.IAM.User.Domain.Exception;
 using elearning.Tests.IAM.User.Domain.Stub;
 using UserAggregate = elearning.src.IAM.User.Domain.User;
 using Moq;
@@ -13,10 +13,10 @@ namespace elearning.Tests.IAM.User.Application.Query.FindUserById
     [TestFixture]
     public class FindUserByIdUseCaseTest
     {
-        UserId userId;
-        UserAggregate user;
-        UserResponse userResponse;
-        FindUserByIdUseCase findUserByIdUseCase;
+        private UserId userId;
+        private UserAggregate user;
+        private UserResponse userResponse;
+        private FindUserByIdUseCase findUserByIdUseCase;
 
         [SetUp]
         public void Setup() {
@@ -43,7 +43,7 @@ namespace elearning.Tests.IAM.User.Application.Query.FindUserById
             userRepository
                 .Setup(m => m.Get(It.IsAny<UserId>()))
                 .Throws(UserNotFoundException.FromId(userId));
-            Mock<UserResponseConverter> userResponseConverter = SetUpUserResponseConverterMock(userResponse);
+            Mock<UserResponseConverter> userResponseConverter = SetUpUserResponseConverterMock();
             findUserByIdUseCase = new FindUserByIdUseCase(
                 userRepository.Object,
                 userResponseConverter.Object
@@ -58,8 +58,8 @@ namespace elearning.Tests.IAM.User.Application.Query.FindUserById
 
         [Test]
         public void ItShouldGetUser() {
-            Mock<IUserRepository> userRepository = SetUpIUserRepositoryMock(user);
-            Mock<UserResponseConverter> userResponseConverter = SetUpUserResponseConverterMock(userResponse);
+            Mock<IUserRepository> userRepository = SetUpIUserRepositoryMock();
+            Mock<UserResponseConverter> userResponseConverter = SetUpUserResponseConverterMock();
             findUserByIdUseCase = new FindUserByIdUseCase(
                 userRepository.Object,
                 userResponseConverter.Object
@@ -75,8 +75,8 @@ namespace elearning.Tests.IAM.User.Application.Query.FindUserById
 
         [Test]
         public void ItShouldCallUserResponseConverter() {
-            Mock<IUserRepository> userRepository = SetUpIUserRepositoryMock(user);
-            Mock<UserResponseConverter> userResponseConverter = SetUpUserResponseConverterMock(userResponse);
+            Mock<IUserRepository> userRepository = SetUpIUserRepositoryMock();
+            Mock<UserResponseConverter> userResponseConverter = SetUpUserResponseConverterMock();
             findUserByIdUseCase = new FindUserByIdUseCase(
                 userRepository.Object,
                 userResponseConverter.Object
@@ -90,7 +90,7 @@ namespace elearning.Tests.IAM.User.Application.Query.FindUserById
             );
         }
 
-        private Mock<IUserRepository> SetUpIUserRepositoryMock(UserAggregate user) {
+        private Mock<IUserRepository> SetUpIUserRepositoryMock() {
             Mock<IUserRepository> userRepository = new Mock<IUserRepository>();
             userRepository
                 .Setup(m => m.Get(It.IsAny<UserId>()))
@@ -98,7 +98,7 @@ namespace elearning.Tests.IAM.User.Application.Query.FindUserById
             return userRepository;
         }
 
-        private Mock<UserResponseConverter> SetUpUserResponseConverterMock(UserResponse userResponse) {
+        private Mock<UserResponseConverter> SetUpUserResponseConverterMock() {
             Mock<UserResponseConverter> userResponseConverter = new Mock<UserResponseConverter>();
             userResponseConverter
                 .Setup(m => m.Convert(It.IsAny<UserAggregate>()))

@@ -8,7 +8,7 @@ namespace elearning.Tests.Shared.Domain
     [TestFixture]
     public class AuthUserTest
     {
-        AuthUser authUser;
+        private AuthUser authUser;
 
         [Test]
         public void ItShouldReturnTrueIfRoleIsStudent()

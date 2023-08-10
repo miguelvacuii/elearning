@@ -1,7 +1,6 @@
 ﻿namespace elearning.src.Shared.Infrastructure.Security.Authorization
 {
-    public interface IAuthorization
+    public interface ICommandAuthorization : IAuthorization
     {
-        void Authorize(dynamic request);
     }
 }

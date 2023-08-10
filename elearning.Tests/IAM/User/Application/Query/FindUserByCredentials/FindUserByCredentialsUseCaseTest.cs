@@ -11,9 +11,9 @@ namespace elearning.Tests.IAM.User.Application.Query.FindUserByCredentials
     [TestFixture]
     public class FindUserByCredentialsUseCaseTest
     {
-        UserEmail email;
-        UserHashedPassword userHashedPassword;
-        UserAggregate user;
+        private UserEmail email;
+        private UserHashedPassword userHashedPassword;
+        private UserAggregate user;
 
         [SetUp]
         public void Setup()
@@ -21,7 +21,6 @@ namespace elearning.Tests.IAM.User.Application.Query.FindUserByCredentials
             email = UserEmailStub.ByDefault();
             userHashedPassword = UserHashedPasswordStub.ByDefault();
             user = UserStub.ByDefault();
-
         }
 
         [Test]
@@ -67,7 +66,7 @@ namespace elearning.Tests.IAM.User.Application.Query.FindUserByCredentials
         private Mock<IUserRepository> CreatedAtAndSetupUserRepositoryMock()
         {
             Mock<IUserRepository> userRepository = new Mock<IUserRepository>();
-            userRepository.Setup(m => m.FindByEmailAndPassword(It.IsAny<UserEmail>(), It.IsAny<UserHashedPassword>())).Verifiable();
+            userRepository.Setup(m => m.FindByEmailAndPassword(It.IsAny<UserEmail>(), It.IsAny<UserHashedPassword>())).Returns(user);
             return userRepository;
         }
 

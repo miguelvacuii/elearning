@@ -1,5 +1,5 @@
 ﻿using elearning.src.IAM.User.Application.Query.FindById;
-using elearning.src.IAM.User.Domain.Service.Exception;
+using elearning.src.IAM.User.Domain.Exception;
 using elearning.src.Shared.Domain;
 using elearning.src.Shared.Infrastructure.Security.Authentication;
 using elearning.src.Shared.Infrastructure.Security.Authentication.JWT;

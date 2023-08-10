@@ -10,12 +10,11 @@ namespace elearning.Tests.IAM.User.Domain.Service
 {
     public class UniqueUserTest {
 
-        UserEmail email;
+        private UserEmail email;
 
         [SetUp]
         public void Setup() {
             email = UserEmailStub.ByDefault();
-
         }
 
         [Test]

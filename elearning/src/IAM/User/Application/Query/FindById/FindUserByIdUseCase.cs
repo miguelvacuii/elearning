@@ -1,7 +1,7 @@
 ﻿using elearning.src.IAM.User.Application.Query.Response;
 using elearning.src.IAM.User.Domain;
 using elearning.src.Shared.Domain.Bus.Query;
-using elearning.src.IAM.User.Application.Query.Exception;
+using elearning.src.IAM.User.Domain.Exception;
 using UserAggregate = elearning.src.IAM.User.Domain.User;
 
 namespace elearning.src.IAM.User.Application.Query.FindById
