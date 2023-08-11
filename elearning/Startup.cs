@@ -34,6 +34,10 @@ namespace elearning
             (new src.IAM.Token.Infrastructure.Framework.Configure.Startup.Service.InfrastructureServices()).Load(services);
             (new src.IAM.Token.Infrastructure.Framework.Configure.Startup.Service.DomainServices()).Load(services);
             (new src.IAM.Token.Infrastructure.Framework.Configure.Startup.Service.ApplicationServices()).Load(services);
+
+            (new src.CourseBackoffice.Infrastructure.Framework.Configure.Startup.Service.InfrastructureServices()).Load(services);
+            (new src.CourseBackoffice.Infrastructure.Framework.Configure.Startup.Service.DomainServices()).Load(services);
+            (new src.CourseBackoffice.Infrastructure.Framework.Configure.Startup.Service.ApplicationServices()).Load(services);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -50,6 +54,9 @@ namespace elearning
 
                 (new src.IAM.Token.Infrastructure.Framework.Configure.Startup.Subscriber.SyncCommandSubscriber()).Setup(context);
                 (new src.IAM.Token.Infrastructure.Framework.Configure.Startup.Subscriber.SyncEventSubscriber()).Setup(context);
+
+                (new src.CourseBackoffice.Infrastructure.Framework.Configure.Startup.Subscriber.SyncCommandSubscriber()).Setup(context);
+                (new src.CourseBackoffice.Infrastructure.Framework.Configure.Startup.Subscriber.SyncEventSubscriber()).Setup(context);
 
                 return next();
             });

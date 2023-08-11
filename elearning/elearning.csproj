@@ -94,6 +94,27 @@
     <Folder Include="src\Shared\Domain\Bus\Query\Middleware\" />
     <Folder Include="src\IAM\User\Application\Command\Update\" />
     <Folder Include="src\IAM\User\Domain\Exception\" />
+    <Folder Include="src\CourseBackoffice\" />
+    <Folder Include="src\CourseBackoffice\Application\" />
+    <Folder Include="src\CourseBackoffice\Domain\" />
+    <Folder Include="src\CourseBackoffice\Infrastructure\" />
+    <Folder Include="src\CourseBackoffice\Application\Command\" />
+    <Folder Include="src\CourseBackoffice\Application\Query\" />
+    <Folder Include="src\CourseBackoffice\Application\Event\" />
+    <Folder Include="src\CourseBackoffice\Infrastructure\Persistence\" />
+    <Folder Include="src\CourseBackoffice\Infrastructure\Framework\" />
+    <Folder Include="src\CourseBackoffice\UI\" />
+    <Folder Include="src\CourseBackoffice\UI\Rest\" />
+    <Folder Include="src\CourseBackoffice\UI\Rest\Controller\" />
+    <Folder Include="src\CourseBackoffice\Application\Command\Create\" />
+    <Folder Include="src\CourseBackoffice\Domain\Event\" />
+    <Folder Include="src\CourseBackoffice\Infrastructure\Persistence\Mapping\" />
+    <Folder Include="src\CourseBackoffice\Infrastructure\Persistence\Repository\" />
+    <Folder Include="src\CourseBackoffice\Infrastructure\Framework\Configure\" />
+    <Folder Include="src\CourseBackoffice\Infrastructure\Framework\Configure\Startup\" />
+    <Folder Include="src\CourseBackoffice\Infrastructure\Framework\Configure\Startup\Service\" />
+    <Folder Include="src\CourseBackoffice\Infrastructure\Framework\Configure\Startup\Subscriber\" />
+    <Folder Include="src\CourseBackoffice\Infrastructure\Service\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -202,5 +223,27 @@
     <None Remove="src\Shared\Domain\Bus\Query\Middleware\" />
     <None Remove="src\IAM\User\Application\Command\Update\" />
     <None Remove="src\IAM\User\Domain\Exception\" />
+    <None Remove="src\CourseBackoffice\" />
+    <None Remove="src\CourseBackoffice\Application\" />
+    <None Remove="src\CourseBackoffice\Domain\" />
+    <None Remove="src\CourseBackoffice\Infrastructure\" />
+    <None Remove="src\CourseBackoffice\Application\Command\" />
+    <None Remove="src\CourseBackoffice\Application\Query\" />
+    <None Remove="src\CourseBackoffice\Application\Event\" />
+    <None Remove="src\CourseBackoffice\Infrastructure\Persistence\" />
+    <None Remove="src\CourseBackoffice\Infrastructure\Framework\" />
+    <None Remove="src\CourseBackoffice\UI\" />
+    <None Remove="src\CourseBackoffice\UI\Rest\" />
+    <None Remove="src\CourseBackoffice\UI\Rest\Controller\" />
+    <None Remove="src\CourseBackoffice\Application\Command\Create\" />
+    <None Remove="src\CourseBackoffice\Domain\Event\" />
+    <None Remove="src\CourseBackoffice\Infrastructure\Persistence\Mapping\" />
+    <None Remove="src\CourseBackoffice\Infrastructure\Persistence\Repository\" />
+    <None Remove="src\CourseBackoffice\Infrastructure\Framework\Configure\" />
+    <None Remove="src\CourseBackoffice\Infrastructure\Framework\Configure\Startup\" />
+    <None Remove="src\CourseBackoffice\Infrastructure\Framework\Configure\Startup\Service\" />
+    <None Remove="src\CourseBackoffice\Infrastructure\Framework\Configure\Startup\Subscriber\" />
+    <None Remove="src\CourseBackoffice\Infrastructure\Service\" />
+    <None Remove="src\IAM\User\Application\Query\FindUserByCredentials\FindUserByCredentials\" />
   </ItemGroup>
 </Project>

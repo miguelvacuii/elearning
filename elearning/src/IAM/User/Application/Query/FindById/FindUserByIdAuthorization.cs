@@ -23,12 +23,12 @@ namespace elearning.src.IAM.User.Application.Query.FindById
             UserRole role = new UserRole(user.role);
             UserId id = new UserId(findUserByIdQuery.id);
 
-            if (!user.IsStudent())
+            if (user.IsAdministrator())
             {
                 throw UnauthorizedException.FromRole(role);
             }
 
-            if (id.Value != user.id) {
+            if (!request.isInternalQuery && id.Value != user.id) {
                 throw UserAuthorizationException.FromId(id);
             }
         }
