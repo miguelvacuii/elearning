@@ -71,5 +71,27 @@ namespace elearning.src.CourseBackoffice.Domain
                 )
             );
         }
+
+        public void Update(CourseName newName, CourseDescription newDescription)
+        {
+            if (!status.Value.Equals(CourseStatusEnum.unpublish.ToString()))
+            {
+                throw CourseStatusException.FromUpdate(status);
+            }
+
+            name = newName;
+            description = newDescription;
+
+            this.Record(
+                new CoursePublishedEvent(
+                    id.Value,
+                    new Dictionary<string, string>()
+                    {
+                        ["name"] = name.Value,
+                        ["description"] = description.Value,
+                    }
+                )
+            );
+        }
     }
 }

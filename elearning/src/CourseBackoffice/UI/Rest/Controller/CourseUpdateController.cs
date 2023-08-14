@@ -1,5 +1,5 @@
-﻿using elearning.src.CourseBackoffice.Application.Command.Create;
-using elearning.src.CourseBackoffice.Application.Command.Publish;
+﻿using elearning.src.CourseBackoffice.Application.Command.Publish;
+using elearning.src.CourseBackoffice.Application.Command.Update;
 using elearning.src.Shared.Domain;
 using elearning.src.Shared.Domain.Bus.Command;
 using elearning.src.Shared.Infrastructure.Service.JsonApi;
@@ -24,8 +24,20 @@ namespace elearning.src.CourseBackoffice.UI.Rest.Controller
         [Authorize(Roles = AuthUser.ROLE_ADMINISTRATOR)]
         public IActionResult Publish(string id)
         {
-            PublishCourseCommand command = new PublishCourseCommand(id);
-            return Dispatch(command);
+            return Dispatch(new PublishCourseCommand(id));
+        }
+
+        [HttpPut()]
+        [Authorize(Roles = AuthUser.ROLE_TEACHER)]
+        public IActionResult Update(string id, UpdateCourseCommand command)
+        {
+            return Dispatch(
+                new UpdateCourseCommand(
+                    id,
+                    command.name,
+                    command.description
+                )
+            );
         }
     }
 }

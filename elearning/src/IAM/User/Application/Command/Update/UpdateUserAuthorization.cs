@@ -8,7 +8,7 @@ namespace elearning.src.IAM.User.Application.Command.Update
 {
     public class UpdateUserAuthorization : ICommandAuthorization
     {
-        private OAuth oAuth;
+        private readonly OAuth oAuth;
 
         public UpdateUserAuthorization(OAuth oAuth)
         {
