@@ -1,4 +1,5 @@
 ﻿using elearning.src.CourseBackoffice.Application.Command.Create;
+using elearning.src.CourseBackoffice.Application.Command.Publish;
 using elearning.src.Shared.Domain;
 using elearning.src.Shared.Domain.Bus.Command;
 using elearning.src.Shared.Infrastructure.Service.JsonApi;
@@ -9,20 +10,21 @@ using Microsoft.AspNetCore.Mvc;
 namespace elearning.src.CourseBackoffice.UI.Rest.Controller
 {
     [ApiVersion("1.0")]
-    [Route("api/v{version:apiVersion}/courses")]
+    [Route("api/v{version:apiVersion}/courses/{id}")]
     [ApiController]
-    [ControllerName("CreateCourse")]
-    public class CourseCreateController : CommandSyncControllerBase {
+    [ControllerName("UpdateCourse")]
+    public class CourseUpdateController : CommandSyncControllerBase {
 
-        public CourseCreateController(
+        public CourseUpdateController(
             ICommandBus syncCommandBus,
             IJsonApiEncoder jsonApiEncoder
         ) : base(syncCommandBus, jsonApiEncoder) { }
 
-        [HttpPost()]
-        [Authorize(Roles = AuthUser.ROLE_TEACHER)]
-        public IActionResult Create(CreateCourseCommand command)
+        [HttpPatch()]
+        [Authorize(Roles = AuthUser.ROLE_ADMINISTRATOR)]
+        public IActionResult Publish(string id)
         {
+            PublishCourseCommand command = new PublishCourseCommand(id);
             return Dispatch(command);
         }
     }
