@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using elearning.src.Shared.Domain;
 using elearning.src.CourseBackoffice.Domain.Event;
+using elearning.src.CourseBackoffice.Domain.Exception;
 
 namespace elearning.src.CourseBackoffice.Domain
 {
@@ -49,6 +50,26 @@ namespace elearning.src.CourseBackoffice.Domain
             );
 
             return course;
+        }
+
+        public void Publish()
+        {
+            if (!status.Value.Equals(CourseStatusEnum.unpublish.ToString())) {
+                throw CourseStatusException.FromPublish(status);
+            }
+
+            status = new CourseStatus(CourseStatusEnum.published.ToString());
+
+            this.Record(
+                new CoursePublishedEvent(
+                    id.Value,
+                    new Dictionary<string, string>()
+                    {
+                        ["name"] = name.Value,
+                        ["status"] = status.Value,
+                    }
+                )
+            );
         }
     }
 }

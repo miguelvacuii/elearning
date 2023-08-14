@@ -115,6 +115,8 @@
     <Folder Include="src\CourseBackoffice\Infrastructure\Framework\Configure\Startup\Service\" />
     <Folder Include="src\CourseBackoffice\Infrastructure\Framework\Configure\Startup\Subscriber\" />
     <Folder Include="src\CourseBackoffice\Infrastructure\Service\" />
+    <Folder Include="src\CourseBackoffice\Application\Command\Publish\" />
+    <Folder Include="src\CourseBackoffice\Domain\Exception\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -245,5 +247,7 @@
     <None Remove="src\CourseBackoffice\Infrastructure\Framework\Configure\Startup\Subscriber\" />
     <None Remove="src\CourseBackoffice\Infrastructure\Service\" />
     <None Remove="src\IAM\User\Application\Query\FindUserByCredentials\FindUserByCredentials\" />
+    <None Remove="src\CourseBackoffice\Application\Command\Publish\" />
+    <None Remove="src\CourseBackoffice\Domain\Exception\" />
   </ItemGroup>
 </Project>
