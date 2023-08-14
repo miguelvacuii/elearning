@@ -115,6 +115,11 @@
     <Folder Include="src\CourseBackoffice\Infrastructure\Framework\Configure\Startup\Service\" />
     <Folder Include="src\CourseBackoffice\Infrastructure\Framework\Configure\Startup\Subscriber\" />
     <Folder Include="src\CourseBackoffice\Infrastructure\Service\" />
+    <Folder Include="src\Shared\Domain\Specification\" />
+    <Folder Include="src\CourseBackoffice\Domain\Specification\" />
+    <Folder Include="src\IAM\User\Domain\Specification\" />
+    <Folder Include="src\IAM\User\Infrastructure\Persistence\Specification\" />
+    <Folder Include="src\Shared\Infrastructure\Persistence\Specification\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -245,5 +250,10 @@
     <None Remove="src\CourseBackoffice\Infrastructure\Framework\Configure\Startup\Subscriber\" />
     <None Remove="src\CourseBackoffice\Infrastructure\Service\" />
     <None Remove="src\IAM\User\Application\Query\FindUserByCredentials\FindUserByCredentials\" />
+    <None Remove="src\Shared\Domain\Specification\" />
+    <None Remove="src\CourseBackoffice\Domain\Specification\" />
+    <None Remove="src\IAM\User\Domain\Specification\" />
+    <None Remove="src\IAM\User\Infrastructure\Persistence\Specification\" />
+    <None Remove="src\Shared\Infrastructure\Persistence\Specification\" />
   </ItemGroup>
 </Project>

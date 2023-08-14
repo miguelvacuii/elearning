@@ -1,4 +1,6 @@
-﻿using elearning.src.CourseBackoffice.Infrastructure.Service.Course;
+﻿using elearning.src.CourseBackoffice.Domain.Specification;
+using elearning.src.CourseBackoffice.Infrastructure.Service.Course;
+using elearning.src.Shared.Domain.Specification;
 using elearning.src.Shared.Infrastructure.Framework.Startup.Service;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -10,6 +12,7 @@ namespace elearning.src.CourseBackoffice.Infrastructure.Framework.Configure.Star
             services.AddScoped<CourseFacade>();
             services.AddScoped<CourseTranslator>();
             services.AddScoped<CourseAdapter>();
+            services.AddScoped<ISpecification<Domain.Course>, TeacherExistSpecification>();
         }
     }
 }

@@ -17,7 +17,7 @@ namespace elearning.src.CourseBackoffice.Infrastructure.Service.Course
             this.courseTranslator = courseTranslator;
         }
 
-        public virtual Teacher FindPayloadById(string id)
+        public virtual Teacher FinTeacherById(string id)
         {
             IResponse response = courseFacade.FindPayloadById(id);
             return courseTranslator.FromRepresentationToTeacher(response);
