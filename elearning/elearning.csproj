@@ -117,6 +117,7 @@
     <Folder Include="src\CourseBackoffice\Infrastructure\Service\" />
     <Folder Include="src\CourseBackoffice\Application\Command\Publish\" />
     <Folder Include="src\CourseBackoffice\Domain\Exception\" />
+    <Folder Include="src\CourseBackoffice\Application\Command\Update\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -249,5 +250,6 @@
     <None Remove="src\IAM\User\Application\Query\FindUserByCredentials\FindUserByCredentials\" />
     <None Remove="src\CourseBackoffice\Application\Command\Publish\" />
     <None Remove="src\CourseBackoffice\Domain\Exception\" />
+    <None Remove="src\CourseBackoffice\Application\Command\Update\" />
   </ItemGroup>
 </Project>

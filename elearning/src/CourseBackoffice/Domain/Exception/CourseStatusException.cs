@@ -12,5 +12,12 @@ namespace elearning.src.CourseBackoffice.Domain.Exception
 				string.Format("Cannot publish this course because status is {0}", status.Value)
 			);
 		}
+
+		public static CourseStatusException FromUpdate(CourseStatus status)
+		{
+			return new CourseStatusException(
+				string.Format("Cannot update this course because status is {0}", status.Value)
+			);
+		}
 	}
 }

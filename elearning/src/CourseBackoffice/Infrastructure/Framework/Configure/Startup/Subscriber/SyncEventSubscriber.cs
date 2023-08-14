@@ -20,6 +20,10 @@ namespace elearning.src.CourseBackoffice.Infrastructure.Framework.Configure.Star
                 context.RequestServices.GetRequiredService<SendEmailWhenCoursePublishedEventHandler>(),
                 CoursePublishedEvent.NAME
             );
+            eventBus.Subscribe(
+                context.RequestServices.GetRequiredService<SendEmailWhenCourseUpdatedEventHandler>(),
+                CourseUpdatedEvent.NAME
+            );
         }
     }
 }
