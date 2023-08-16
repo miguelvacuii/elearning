@@ -24,7 +24,9 @@ namespace elearning.Tests.IAM.User.Domain.Service
                 (UserAggregate)null
             );
 
-            UniqueUser uniqueUser = new UniqueUser(userRepository.Object);
+            Mock<IUserSpecificationFactory> userSpecificationFactory = new Mock<IUserSpecificationFactory>();
+
+            UniqueUser uniqueUser = new UniqueUser(userRepository.Object, userSpecificationFactory.Object);
             uniqueUser.CheckUserEmailNotExists(UserEmailStub.ByDefault());
 
             userRepository.VerifyAll();
@@ -40,8 +42,9 @@ namespace elearning.Tests.IAM.User.Domain.Service
             userRepository.Setup(m => m.FindByEmail(email)).Returns(
                 UserStub.ByDefault()
             );
+            Mock<IUserSpecificationFactory> userSpecificationFactory = new Mock<IUserSpecificationFactory>();
 
-            UniqueUser uniqueUser = new UniqueUser(userRepository.Object);
+            UniqueUser uniqueUser = new UniqueUser(userRepository.Object, userSpecificationFactory.Object);
 
             UserFoundException exception = Assert.Throws<UserFoundException>(
                 () => uniqueUser.CheckUserEmailNotExists(UserEmailStub.ByDefault())

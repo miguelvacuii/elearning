@@ -30,5 +30,15 @@ namespace elearning.src.Shared.Domain.Query.Criteria
         ) {
             return new Criteria(criterion, order, limit, offset);
         }
+
+        public static Criteria CreateForOne(
+            List<Criterion> criterion
+        )
+        {
+            List<Order> order = new List<Order>();
+            Limit limit = new Limit(1);
+            Offset offset = new Offset(1);
+            return new Criteria(criterion, order, limit, offset);
+        }
     }
 }
