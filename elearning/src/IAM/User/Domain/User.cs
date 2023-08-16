@@ -78,9 +78,14 @@ namespace elearning.src.IAM.User.Domain
 		}
 
 		public void Update(UserFirstName newFirstName, UserLastName newLastName) {
-			this.firstName = newFirstName;
-			this.lastName = newLastName;
-			this.updatedAt = new UserUpdatedAt(DateTime.Now);
+
+			if (firstName.Equals(newFirstName) && lastName.Equals(newLastName)) {
+				return;
+			}
+
+			firstName = newFirstName;
+			lastName = newLastName;
+			updatedAt = new UserUpdatedAt(DateTime.Now);
 
 			this.Record(
    				new UserUpdatedEvent(

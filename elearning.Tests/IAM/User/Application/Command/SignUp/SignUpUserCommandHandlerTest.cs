@@ -36,7 +36,8 @@ namespace elearning.Tests.IAM.User.Application.Command.SignUp
             Mock<IHashing> hashing = CreateAndSetupHashingMock();
             Mock<IUserRepository> userRepository = new Mock<IUserRepository>();
             Mock<IEventProvider> eventProvider = new Mock<IEventProvider>();
-            Mock<UniqueUser> uniqueUser = new Mock<UniqueUser>(userRepository.Object);
+            Mock<IUserSpecificationFactory> userSpecificationFactory = new Mock<IUserSpecificationFactory>();
+            Mock<UniqueUser> uniqueUser = new Mock<UniqueUser>(userRepository.Object, userSpecificationFactory.Object);
 
             Mock<SignUpUserUseCase> signUpUserUseCase = CreateAndSetupSignUpUserUseCaseMock(
                 userRepository, uniqueUser, eventProvider
@@ -59,7 +60,8 @@ namespace elearning.Tests.IAM.User.Application.Command.SignUp
             Mock<IHashing> hashing = CreateAndSetupHashingMock();
             Mock<IUserRepository> userRepository = new Mock<IUserRepository>();
             Mock<IEventProvider> eventProvider = new Mock<IEventProvider>();
-            Mock<UniqueUser> uniqueUser = new Mock<UniqueUser>(userRepository.Object);
+            Mock<IUserSpecificationFactory> userSpecificationFactory = new Mock<IUserSpecificationFactory>();
+            Mock<UniqueUser> uniqueUser = new Mock<UniqueUser>(userRepository.Object, userSpecificationFactory.Object);
             Mock<SignUpUserUseCase> signUpUserUseCase = CreateAndSetupSignUpUserUseCaseMock(
                 userRepository, uniqueUser, eventProvider
             );

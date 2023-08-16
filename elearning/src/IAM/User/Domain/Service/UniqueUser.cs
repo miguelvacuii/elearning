@@ -35,7 +35,7 @@ namespace elearning.src.IAM.User.Domain.Service
 
 			if (users.Count > 0)
 			{
-				throw UserFoundException.FromEmail(user.email);
+				throw UserFoundException.FromUser(user);
 			}
 		}
 	}

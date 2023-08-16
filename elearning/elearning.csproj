@@ -123,6 +123,7 @@
     <Folder Include="src\CourseBackoffice\Application\Command\Publish\" />
     <Folder Include="src\CourseBackoffice\Domain\Exception\" />
     <Folder Include="src\CourseBackoffice\Application\Command\Update\" />
+    <Folder Include="src\CourseBackoffice\Domain\Service\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -261,5 +262,6 @@
     <None Remove="src\CourseBackoffice\Application\Command\Publish\" />
     <None Remove="src\CourseBackoffice\Domain\Exception\" />
     <None Remove="src\CourseBackoffice\Application\Command\Update\" />
+    <None Remove="src\CourseBackoffice\Domain\Service\" />
   </ItemGroup>
 </Project>

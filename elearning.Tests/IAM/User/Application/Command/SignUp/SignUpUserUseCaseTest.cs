@@ -32,10 +32,11 @@ namespace elearning.Tests.IAM.User.Application.Command.SignUp
         }
 
         [Test]
-        public void ItShouldCheckUserEmailNotExists()
+        public void ItShouldCheckUserNotExists()
         {
             Mock<IUserRepository> userRepository = new Mock<IUserRepository>();
-            Mock<UniqueUser> uniqueUser = CreateAndSetupUniqueUserMock(userRepository);
+            Mock<IUserSpecificationFactory> userSpecificationFactory = new Mock<IUserSpecificationFactory>();
+            Mock<UniqueUser> uniqueUser = CreateAndSetupUniqueUserMock(userRepository, userSpecificationFactory);
             Mock<IEventProvider> eventProvider = new Mock<IEventProvider>();
 
             SignUpUserUseCase signUpUserUseCase = new SignUpUserUseCase(
@@ -46,7 +47,7 @@ namespace elearning.Tests.IAM.User.Application.Command.SignUp
             );
 
             uniqueUser.Verify(
-                m => m.CheckUserEmailNotExists(It.IsAny<UserEmail>()),
+                m => m.CheckUserNotExists(It.IsAny<UserAggregate>()),
                 Times.AtLeastOnce()
             );
         }
@@ -55,7 +56,8 @@ namespace elearning.Tests.IAM.User.Application.Command.SignUp
         public void ItShouldAddUser()
         {
             Mock<IUserRepository> userRepository = CreatedAtAndSetupUserRepositoryMock();
-            Mock<UniqueUser> uniqueUser = new Mock<UniqueUser>(userRepository.Object);
+            Mock<IUserSpecificationFactory> userSpecificationFactory = new Mock<IUserSpecificationFactory>();
+            Mock<UniqueUser> uniqueUser = new Mock<UniqueUser>(userRepository.Object, userSpecificationFactory.Object);
             Mock<IEventProvider> eventProvider = new Mock<IEventProvider>();
 
             SignUpUserUseCase signUpUserUseCase = new SignUpUserUseCase(
@@ -75,7 +77,8 @@ namespace elearning.Tests.IAM.User.Application.Command.SignUp
         public void ItShouldRecordReleasedUserEvents()
         {
             Mock<IUserRepository> userRepository = new Mock<IUserRepository>();
-            Mock<UniqueUser> uniqueUser = new Mock<UniqueUser>(userRepository.Object);
+            Mock<IUserSpecificationFactory> userSpecificationFactory = new Mock<IUserSpecificationFactory>();
+            Mock<UniqueUser> uniqueUser = new Mock<UniqueUser>(userRepository.Object, userSpecificationFactory.Object);
             Mock<IEventProvider> eventProvider = CreateAndSetupEventProviderMock();
 
             SignUpUserUseCase signUpUserUseCase = new SignUpUserUseCase(
@@ -98,10 +101,12 @@ namespace elearning.Tests.IAM.User.Application.Command.SignUp
             return userRepository;
         }
 
-        private Mock<UniqueUser> CreateAndSetupUniqueUserMock(Mock<IUserRepository> userRepository)
-        {
-            Mock<UniqueUser> uniqueUser = new Mock<UniqueUser>(userRepository.Object);
-            uniqueUser.Setup(m => m.CheckUserEmailNotExists(It.IsAny<UserEmail>())).Verifiable();
+        private Mock<UniqueUser> CreateAndSetupUniqueUserMock(
+            Mock<IUserRepository> userRepository,
+            Mock<IUserSpecificationFactory> userSpecificationFactory
+        ) {
+            Mock<UniqueUser> uniqueUser = new Mock<UniqueUser>(userRepository.Object, userSpecificationFactory.Object);
+            uniqueUser.Setup(m => m.CheckUserNotExists(It.IsAny<UserAggregate>())).Verifiable();
             return uniqueUser;
         }
 

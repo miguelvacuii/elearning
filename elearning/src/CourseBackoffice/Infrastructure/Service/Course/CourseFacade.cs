@@ -12,7 +12,7 @@ namespace elearning.src.CourseBackoffice.Infrastructure.Service.Course
             this.queryBus = queryBus;
         }
 
-        public virtual IResponse FindPayloadById(string id)
+        public virtual IResponse FindTeacherById(string id)
         {
             FindUserByIdQuery findUserById = new FindUserByIdQuery(id, true);
             return queryBus.Ask(findUserById);

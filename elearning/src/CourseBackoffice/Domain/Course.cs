@@ -83,11 +83,13 @@ namespace elearning.src.CourseBackoffice.Domain
             );
         }
 
-        public void Update(CourseName newName, CourseDescription newDescription)
-        {
-            if (!status.Value.Equals(CourseStatusEnum.unpublish.ToString()))
-            {
+        public void Update(CourseName newName, CourseDescription newDescription) {
+
+            if (!status.Value.Equals(CourseStatusEnum.unpublish.ToString())) {
                 throw CourseStatusException.FromUpdate(status);
+            }
+            if (name.Equals(newName) && description.Equals(newDescription)) {
+                return;
             }
 
             name = newName;

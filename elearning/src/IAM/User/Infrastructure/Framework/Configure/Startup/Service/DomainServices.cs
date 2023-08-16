@@ -11,6 +11,7 @@ namespace elearning.src.IAM.User.Infrastructure.Framework.Configure.Startup.Serv
         public void Load(IServiceCollection services)
         {
             services.AddScoped<UniqueUser>();
+            services.AddScoped<UserFinder>();
             services.AddScoped<UserExistSpecification>();
             services.AddScoped<ISpecification <Domain.User>, EmailExistSpecification>();
             services.AddScoped<ISpecification <Domain.User>, UserExistSpecification >();

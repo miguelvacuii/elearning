@@ -30,7 +30,6 @@ namespace elearning.src.IAM.User.Application.Command.SignUp
             UserRole role
         ) {
             UserAggregate user = UserAggregate.SignUp(id, email, firstName, lastName, password, role);
-            //uniqueUser.CheckUserEmailNotExists(user.email);
             uniqueUser.CheckUserNotExists(user);
             userRepository.Add(user);
             eventProvider.RecordEvents(user.ReleaseEvents());

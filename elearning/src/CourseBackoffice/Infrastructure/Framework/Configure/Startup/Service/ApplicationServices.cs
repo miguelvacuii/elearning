@@ -3,6 +3,7 @@ using elearning.src.CourseBackoffice.Application.Command.Publish;
 using elearning.src.CourseBackoffice.Application.Command.Update;
 using elearning.src.CourseBackoffice.Application.Event;
 using elearning.src.Shared.Infrastructure.Framework.Startup.Service;
+using elearning.src.Shared.Infrastructure.Security.Authorization;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace elearning.src.CourseBackoffice.Infrastructure.Framework.Configure.Startup.Service
@@ -19,6 +20,7 @@ namespace elearning.src.CourseBackoffice.Infrastructure.Framework.Configure.Star
             services.AddScoped<PublishCourseUseCase>();
             services.AddScoped<SendEmailWhenCoursePublishedEventHandler>();
 
+            services.AddScoped<ICommandAuthorization, UpdateCourseAuthorization>();
             services.AddScoped<UpdateCourseCommandHandler>();
             services.AddScoped<UpdateCourseUseCase>();
             services.AddScoped<SendEmailWhenCourseUpdatedEventHandler>();

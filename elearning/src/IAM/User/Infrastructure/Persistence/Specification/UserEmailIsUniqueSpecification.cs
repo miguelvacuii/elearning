@@ -8,7 +8,7 @@ namespace elearning.src.IAM.User.Infrastructure.Persistence.Specification
     {
         public override Criteria GetCriteria(Domain.User user)
         {
-            Criterion criterion = Criterion.Create("email", user.id.Value);
+            Criterion criterion = Criterion.Create("email", user.email.Value);
             List<Criterion> criterionList = new List<Criterion>();
             criterionList.Add(criterion);
             return Criteria.CreateForOne(criterionList);
