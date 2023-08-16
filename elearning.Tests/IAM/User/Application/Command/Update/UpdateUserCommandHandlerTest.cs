@@ -1,6 +1,7 @@
 ﻿using elearning.src.IAM.User.Application.Command.Update;
 using elearning.src.IAM.User.Application.Query.FindById;
 using elearning.src.IAM.User.Domain;
+using elearning.src.IAM.User.Domain.Service;
 using elearning.src.Shared.Domain.Bus.Event;
 using elearning.Tests.IAM.User.Domain.Stub;
 using Moq;
@@ -30,8 +31,9 @@ namespace elearning.Tests.IAM.User.Application.Command.Update
         {
             Mock<IUserRepository> userRepository = new Mock<IUserRepository>();
             Mock<IEventProvider> eventProvider = new Mock<IEventProvider>();
+            Mock<UserFinder> userFinder = new Mock<UserFinder>(userRepository.Object);
             Mock<UpdateUserUseCase> updateUserUseCase = CreateAndSetupUpdateUserUseCaseMock(
-                userRepository, eventProvider
+                userRepository, eventProvider, userFinder
             );
 
             UpdateUserCommandHandler updateUserCommandHandler = new UpdateUserCommandHandler(
@@ -44,11 +46,12 @@ namespace elearning.Tests.IAM.User.Application.Command.Update
 
         private Mock<UpdateUserUseCase> CreateAndSetupUpdateUserUseCaseMock(
             Mock<IUserRepository> userRepository,
-            Mock<IEventProvider> eventProvider
+            Mock<IEventProvider> eventProvider,
+            Mock<UserFinder> userFinder
         )
         {
             Mock<UpdateUserUseCase> updateUserUseCase = new Mock<UpdateUserUseCase>(
-                userRepository.Object, eventProvider.Object
+                userRepository.Object, eventProvider.Object, userFinder.Object
             );
             updateUserUseCase.Setup(m => m.Invoke(
                 It.IsAny<UserId>(),

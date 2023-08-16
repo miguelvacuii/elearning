@@ -40,11 +40,11 @@ namespace elearning.Tests.IAM.User.Application.Command.Update
             userRepository
                 .Setup(m => m.Get(It.IsAny<UserId>()))
                 .Throws(UserNotFoundException.FromId(userId));
-
             Mock<IEventProvider> eventProvider = new Mock<IEventProvider>();
+            Mock<UserFinder> userFinder = new Mock<UserFinder>(userRepository.Object);
 
             UpdateUserUseCase updateUserUseCase = new UpdateUserUseCase(
-                userRepository.Object, eventProvider.Object
+                userRepository.Object, eventProvider.Object, userFinder.Object
             );
             UserNotFoundException exception = Assert.Throws<UserNotFoundException>(
                 () => updateUserUseCase.Invoke(
@@ -61,9 +61,10 @@ namespace elearning.Tests.IAM.User.Application.Command.Update
             Mock<IUserRepository> userRepository = CreatedAtAndSetupUserRepositoryMock();
             Mock<UniqueUser> uniqueUser = new Mock<UniqueUser>(userRepository.Object);
             Mock<IEventProvider> eventProvider = new Mock<IEventProvider>();
+            Mock<UserFinder> userFinder = new Mock<UserFinder>(userRepository.Object);
 
             UpdateUserUseCase updateUserUseCase = new UpdateUserUseCase(
-                userRepository.Object, eventProvider.Object
+                userRepository.Object, eventProvider.Object, userFinder.Object
             );
             updateUserUseCase.Invoke(
                 userId, firstName, lastName
@@ -76,41 +77,15 @@ namespace elearning.Tests.IAM.User.Application.Command.Update
         }
 
         [Test]
-        public void ItShouldReturnIfUserFirstNameAndLastNameAreLikeDatabaseValues()
-        {
-            UserFirstName firstName = UserFirstNameStub.ByDefault();
-            UserLastName lastName = UserLastNameStub.ByDefault();
-            Mock<IUserRepository> userRepository = CreatedAtAndSetupUserRepositoryMock();
-            Mock<UniqueUser> uniqueUser = new Mock<UniqueUser>(userRepository.Object);
-            Mock<IEventProvider> eventProvider = new Mock<IEventProvider>();
-
-            UpdateUserUseCase updateUserUseCase = new UpdateUserUseCase(
-                userRepository.Object, eventProvider.Object
-            );
-            updateUserUseCase.Invoke(
-                userId, firstName, lastName
-            );
-
-            userRepository.Verify(
-                m => m.Update(It.IsAny<UserAggregate>()),
-                Times.Never()
-            );
-
-            eventProvider.Verify(
-                m => m.RecordEvents(It.IsAny<List<DomainEvent>>()),
-                Times.Never()
-            );
-        }
-
-        [Test]
         public void ItShouldUpdateUser()
         {
             Mock<IUserRepository> userRepository = CreatedAtAndSetupUserRepositoryMock();
             Mock<UniqueUser> uniqueUser = new Mock<UniqueUser>(userRepository.Object);
             Mock<IEventProvider> eventProvider = new Mock<IEventProvider>();
+            Mock<UserFinder> userFinder = new Mock<UserFinder>(userRepository.Object);
 
             UpdateUserUseCase updateUserUseCase = new UpdateUserUseCase(
-                userRepository.Object, eventProvider.Object
+                userRepository.Object, eventProvider.Object, userFinder.Object
             );
             updateUserUseCase.Invoke(
                 userId, firstName, lastName
@@ -128,9 +103,10 @@ namespace elearning.Tests.IAM.User.Application.Command.Update
             Mock<IUserRepository> userRepository = CreatedAtAndSetupUserRepositoryMock(); ;
             Mock<UniqueUser> uniqueUser = new Mock<UniqueUser>(userRepository.Object);
             Mock<IEventProvider> eventProvider = CreateAndSetupEventProviderMock();
+            Mock<UserFinder> userFinder = new Mock<UserFinder>(userRepository.Object);
 
             UpdateUserUseCase updateUserUseCase = new UpdateUserUseCase(
-                userRepository.Object, eventProvider.Object
+                userRepository.Object, eventProvider.Object, userFinder.Object
             );
             updateUserUseCase.Invoke(
                 userId, firstName, lastName

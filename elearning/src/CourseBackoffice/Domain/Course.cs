@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using elearning.src.Shared.Domain;
 using elearning.src.CourseBackoffice.Domain.Event;
+using elearning.src.Shared.Domain.Exception;
+using elearning.src.Shared.Domain.Specification;
 using elearning.src.CourseBackoffice.Domain.Exception;
 
 namespace elearning.src.CourseBackoffice.Domain
@@ -31,10 +33,19 @@ namespace elearning.src.CourseBackoffice.Domain
             CourseId id,
             CourseName name,
             CourseDescription description,
-            CourseTeacherId teacherId)
-        {
+            CourseTeacherId teacherId,
+            ISpecification<Course> teacherExistSpecification
+        ) {
+
             CourseStatus status = new CourseStatus(CourseStatusEnum.unpublish.ToString());
             Course course = new Course(id, name, description, status, teacherId);
+
+            if (!teacherExistSpecification.IsSatisfiedBy(course))
+            {
+                throw InvalidAttributeException.FromText(
+                    "This id not corresponding to an user with role teacher"
+                );
+            }
 
             course.Record(
                 new CourseCreatedEvent(
@@ -72,11 +83,13 @@ namespace elearning.src.CourseBackoffice.Domain
             );
         }
 
-        public void Update(CourseName newName, CourseDescription newDescription)
-        {
-            if (!status.Value.Equals(CourseStatusEnum.unpublish.ToString()))
-            {
+        public void Update(CourseName newName, CourseDescription newDescription) {
+
+            if (!status.Value.Equals(CourseStatusEnum.unpublish.ToString())) {
                 throw CourseStatusException.FromUpdate(status);
+            }
+            if (name.Equals(newName) && description.Equals(newDescription)) {
+                return;
             }
 
             name = newName;
