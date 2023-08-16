@@ -21,7 +21,7 @@ namespace elearning.src.CourseBackoffice.UI.Rest.Controller
 
         [HttpPost()]
         [Authorize(Roles = AuthUser.ROLE_TEACHER)]
-        public IActionResult SignUp(CreateCourseCommand command)
+        public IActionResult Create(CreateCourseCommand command)
         {
             return Dispatch(command);
         }

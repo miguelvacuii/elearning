@@ -92,8 +92,12 @@
     <Folder Include="src\Shared\Infrastructure\Security\Authorization\Exception\" />
     <Folder Include="src\Shared\Infrastructure\Bus\Query\Middleware\" />
     <Folder Include="src\Shared\Domain\Bus\Query\Middleware\" />
+    <Folder Include="src\Shared\Domain\Specification\" />
+    <Folder Include="src\Shared\Infrastructure\Persistence\Specification\" />
     <Folder Include="src\IAM\User\Application\Command\Update\" />
     <Folder Include="src\IAM\User\Domain\Exception\" />
+    <Folder Include="src\IAM\User\Domain\Specification\" />
+    <Folder Include="src\IAM\User\Infrastructure\Persistence\Specification\" />
     <Folder Include="src\CourseBackoffice\" />
     <Folder Include="src\CourseBackoffice\Application\" />
     <Folder Include="src\CourseBackoffice\Domain\" />
@@ -115,11 +119,10 @@
     <Folder Include="src\CourseBackoffice\Infrastructure\Framework\Configure\Startup\Service\" />
     <Folder Include="src\CourseBackoffice\Infrastructure\Framework\Configure\Startup\Subscriber\" />
     <Folder Include="src\CourseBackoffice\Infrastructure\Service\" />
-    <Folder Include="src\Shared\Domain\Specification\" />
     <Folder Include="src\CourseBackoffice\Domain\Specification\" />
-    <Folder Include="src\IAM\User\Domain\Specification\" />
-    <Folder Include="src\IAM\User\Infrastructure\Persistence\Specification\" />
-    <Folder Include="src\Shared\Infrastructure\Persistence\Specification\" />
+    <Folder Include="src\CourseBackoffice\Application\Command\Publish\" />
+    <Folder Include="src\CourseBackoffice\Domain\Exception\" />
+    <Folder Include="src\CourseBackoffice\Application\Command\Update\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -222,10 +225,15 @@
     <None Remove="src\IAM\Token\Infrastructure\Framework\Configure\Startup\Subscriber\" />
     <None Remove="src\IAM\User\Infrastructure\Framework\Configure\Startup\Subscriber\" />
     <None Remove="src\IAM\User\Application\Query\FindById\" />
+    <None Remove="src\IAM\User\Application\Query\FindUserByCredentials\FindUserByCredentials\" />
+    <None Remove="src\IAM\User\Domain\Specification\" />
+    <None Remove="src\IAM\User\Infrastructure\Persistence\Specification\" />
     <None Remove="src\Shared\Infrastructure\Security\Authentiation\" />
     <None Remove="src\Shared\Infrastructure\Security\Authorization\Exception\" />
     <None Remove="src\Shared\Infrastructure\Bus\Query\Middleware\" />
     <None Remove="src\Shared\Domain\Bus\Query\Middleware\" />
+    <None Remove="src\Shared\Domain\Specification\" />
+    <None Remove="src\Shared\Infrastructure\Persistence\Specification\" />
     <None Remove="src\IAM\User\Application\Command\Update\" />
     <None Remove="src\IAM\User\Domain\Exception\" />
     <None Remove="src\CourseBackoffice\" />
@@ -249,11 +257,9 @@
     <None Remove="src\CourseBackoffice\Infrastructure\Framework\Configure\Startup\Service\" />
     <None Remove="src\CourseBackoffice\Infrastructure\Framework\Configure\Startup\Subscriber\" />
     <None Remove="src\CourseBackoffice\Infrastructure\Service\" />
-    <None Remove="src\IAM\User\Application\Query\FindUserByCredentials\FindUserByCredentials\" />
-    <None Remove="src\Shared\Domain\Specification\" />
     <None Remove="src\CourseBackoffice\Domain\Specification\" />
-    <None Remove="src\IAM\User\Domain\Specification\" />
-    <None Remove="src\IAM\User\Infrastructure\Persistence\Specification\" />
-    <None Remove="src\Shared\Infrastructure\Persistence\Specification\" />
+    <None Remove="src\CourseBackoffice\Application\Command\Publish\" />
+    <None Remove="src\CourseBackoffice\Domain\Exception\" />
+    <None Remove="src\CourseBackoffice\Application\Command\Update\" />
   </ItemGroup>
 </Project>

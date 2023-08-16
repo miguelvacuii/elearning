@@ -3,6 +3,7 @@ using elearning.src.Shared.Domain;
 using elearning.src.CourseBackoffice.Domain.Event;
 using elearning.src.Shared.Domain.Exception;
 using elearning.src.Shared.Domain.Specification;
+using elearning.src.CourseBackoffice.Domain.Exception;
 
 namespace elearning.src.CourseBackoffice.Domain
 {
@@ -60,6 +61,48 @@ namespace elearning.src.CourseBackoffice.Domain
             );
 
             return course;
+        }
+
+        public void Publish()
+        {
+            if (!status.Value.Equals(CourseStatusEnum.unpublish.ToString())) {
+                throw CourseStatusException.FromPublish(status);
+            }
+
+            status = new CourseStatus(CourseStatusEnum.published.ToString());
+
+            this.Record(
+                new CoursePublishedEvent(
+                    id.Value,
+                    new Dictionary<string, string>()
+                    {
+                        ["name"] = name.Value,
+                        ["status"] = status.Value,
+                    }
+                )
+            );
+        }
+
+        public void Update(CourseName newName, CourseDescription newDescription)
+        {
+            if (!status.Value.Equals(CourseStatusEnum.unpublish.ToString()))
+            {
+                throw CourseStatusException.FromUpdate(status);
+            }
+
+            name = newName;
+            description = newDescription;
+
+            this.Record(
+                new CoursePublishedEvent(
+                    id.Value,
+                    new Dictionary<string, string>()
+                    {
+                        ["name"] = name.Value,
+                        ["description"] = description.Value,
+                    }
+                )
+            );
         }
     }
 }
