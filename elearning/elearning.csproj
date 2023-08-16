@@ -118,6 +118,18 @@
     <Folder Include="src\CourseBackoffice\Application\Command\Publish\" />
     <Folder Include="src\CourseBackoffice\Domain\Exception\" />
     <Folder Include="src\CourseBackoffice\Application\Command\Update\" />
+    <Folder Include="src\StudentParticipation\" />
+    <Folder Include="src\StudentParticipation\Enrollment\" />
+    <Folder Include="src\StudentParticipation\Enrollment\UI\" />
+    <Folder Include="src\StudentParticipation\Enrollment\UI\Rest\" />
+    <Folder Include="src\StudentParticipation\Enrollment\UI\Rest\Controller\" />
+    <Folder Include="src\StudentParticipation\Enrollment\Application\" />
+    <Folder Include="src\StudentParticipation\Enrollment\Domain\" />
+    <Folder Include="src\StudentParticipation\Enrollment\Infrastructure\" />
+    <Folder Include="src\StudentParticipation\Enrollment\Application\Command\" />
+    <Folder Include="src\StudentParticipation\Enrollment\Application\Event\" />
+    <Folder Include="src\StudentParticipation\Enrollment\Application\Query\" />
+    <Folder Include="src\StudentParticipation\Enrollment\Domain\Event\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -251,5 +263,17 @@
     <None Remove="src\CourseBackoffice\Application\Command\Publish\" />
     <None Remove="src\CourseBackoffice\Domain\Exception\" />
     <None Remove="src\CourseBackoffice\Application\Command\Update\" />
+    <None Remove="src\StudentParticipation\" />
+    <None Remove="src\StudentParticipation\Enrollment\" />
+    <None Remove="src\StudentParticipation\Enrollment\UI\" />
+    <None Remove="src\StudentParticipation\Enrollment\UI\Rest\" />
+    <None Remove="src\StudentParticipation\Enrollment\UI\Rest\Controller\" />
+    <None Remove="src\StudentParticipation\Enrollment\Application\" />
+    <None Remove="src\StudentParticipation\Enrollment\Domain\" />
+    <None Remove="src\StudentParticipation\Enrollment\Infrastructure\" />
+    <None Remove="src\StudentParticipation\Enrollment\Application\Command\" />
+    <None Remove="src\StudentParticipation\Enrollment\Application\Event\" />
+    <None Remove="src\StudentParticipation\Enrollment\Application\Query\" />
+    <None Remove="src\StudentParticipation\Enrollment\Domain\Event\" />
   </ItemGroup>
 </Project>
