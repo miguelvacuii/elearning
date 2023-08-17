@@ -9,14 +9,17 @@ namespace elearning.src.StudentParticipation.Enrollment.Application.Command
     {
         private readonly IEnrollmentRepository enrollmentRepository;
         private readonly IEventProvider eventProvider;
+        private readonly ISpecification enrollmentSpecificationFactory;
 
         public CreateEnrollmentUseCase(
             IEnrollmentRepository enrollmentRepository,
-            IEventProvider eventProvider
+            IEventProvider eventProvider,
+            ISpecification enrollmentSpecificationFactory
         )
         {
             this.enrollmentRepository = enrollmentRepository;
             this.eventProvider = eventProvider;
+            this.enrollmentSpecificationFactory = enrollmentSpecificationFactory;
         }
 
         public virtual void Invoke(
@@ -26,7 +29,13 @@ namespace elearning.src.StudentParticipation.Enrollment.Application.Command
             EnrollmentStudentId studentId
         )
         {
-            EnrollmentAggregate enrollment = EnrollmentAggregate.Create(id, progress, courseId, studentId);
+            EnrollmentAggregate enrollment = EnrollmentAggregate.Create(
+                id,
+                progress,
+                courseId,
+                studentId,
+                enrollmentSpecificationFactory.Create()
+            ); ;
             enrollmentRepository.Add(enrollment);
             eventProvider.RecordEvents(enrollment.ReleaseEvents());
         }

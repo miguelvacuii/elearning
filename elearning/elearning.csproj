@@ -136,6 +136,13 @@
     <Folder Include="src\StudentParticipation\Enrollment\Application\Query\" />
     <Folder Include="src\StudentParticipation\Enrollment\Domain\Event\" />
     <Folder Include="src\CourseBackoffice\Domain\Service\" />
+    <Folder Include="src\StudentParticipation\Enrollment\Domain\Specification\" />
+    <Folder Include="src\StudentParticipation\Enrollment\Domain\Exception\" />
+    <Folder Include="src\CourseBackoffice\Application\Query\FindById\" />
+    <Folder Include="src\CourseBackoffice\Application\Query\Response\" />
+    <Folder Include="src\StudentParticipation\Enrollment\Infrastructure\Framework\" />
+    <Folder Include="src\StudentParticipation\Enrollment\Infrastructure\Persistence\" />
+    <Folder Include="src\StudentParticipation\Enrollment\Infrastructure\Service\Enrollment\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -287,5 +294,12 @@
     <None Remove="src\StudentParticipation\Enrollment\Application\Query\" />
     <None Remove="src\StudentParticipation\Enrollment\Domain\Event\" />
     <None Remove="src\CourseBackoffice\Domain\Service\" />
+    <None Remove="src\StudentParticipation\Enrollment\Domain\Specification\" />
+    <None Remove="src\StudentParticipation\Enrollment\Domain\Exceotion\" />
+    <None Remove="src\CourseBackoffice\Application\Query\FindById\" />
+    <None Remove="src\CourseBackoffice\Application\Query\Response\" />
+    <None Remove="src\StudentParticipation\Enrollment\Infrastructure\Framework\" />
+    <None Remove="src\StudentParticipation\Enrollment\Infrastructure\Persistence\" />
+    <None Remove="src\StudentParticipation\Enrollment\Infrastructure\Service\Enrollment\" />
   </ItemGroup>
 </Project>

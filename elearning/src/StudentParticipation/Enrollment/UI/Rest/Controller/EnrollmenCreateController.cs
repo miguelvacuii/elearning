@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace elearning.src.StudentParticipation.Enrollment.UI.Rest.Controller
 {
     [ApiVersion("1.0")]
-    [Route("api/v{version:apiVersion}/enrollment")]
+    [Route("api/v{version:apiVersion}/enrollments")]
     [ApiController]
     [ControllerName("CreateCourse")]
     public class EnrollmenCreateController : CommandSyncControllerBase

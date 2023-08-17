@@ -1,5 +1,4 @@
-﻿using System;
-using elearning.src.Shared.Domain.Bus.Command;
+﻿using elearning.src.Shared.Domain.Bus.Command;
 
 namespace elearning.src.StudentParticipation.Enrollment.Application.Command
 {

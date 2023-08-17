@@ -1,7 +1,6 @@
 ﻿using elearning.src.Shared.Infrastructure.Persistence.Repository;
-using elearning.src.StudentParticipation.Enrollment.Domain;
 
-namespace elearning.src.CourseBackoffice.Domain
+namespace elearning.src.StudentParticipation.Enrollment.Domain
 {
     public interface IEnrollmentRepository : IRepository<Enrollment> { }
 }

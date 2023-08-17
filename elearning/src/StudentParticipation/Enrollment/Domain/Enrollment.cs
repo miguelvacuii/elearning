@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using elearning.src.Shared.Domain;
+using elearning.src.Shared.Domain.Specification;
 using elearning.src.StudentParticipation.Enrollment.Domain.Event;
+using elearning.src.StudentParticipation.Enrollment.Domain.Exception;
 
 namespace elearning.src.StudentParticipation.Enrollment.Domain
 {
@@ -34,12 +36,16 @@ namespace elearning.src.StudentParticipation.Enrollment.Domain
             EnrollmentId id,
             EnrollmentProgress progress,
             EnrollmentCourseId courseId,
-            EnrollmentStudentId studentId
+            EnrollmentStudentId studentId,
+            ISpecification<Enrollment> enrollmentSpecification
         ){
             EnrollmentCreatedAt createdAt = new EnrollmentCreatedAt(DateTime.Now);
             EnrollmentUpdatedAt updatedAt = new EnrollmentUpdatedAt(DateTime.Now);
             Enrollment enrollment = new Enrollment(id, progress, courseId, studentId, createdAt, updatedAt);
 
+            if (!enrollmentSpecification.IsSatisfiedBy(enrollment)) {
+                throw EnrollmentSpecificationException.FromCreation(courseId, studentId);
+            }
             enrollment.Record(
                 new EnrollmentCreatedEvent(
                     enrollment.id.Value,
@@ -49,7 +55,7 @@ namespace elearning.src.StudentParticipation.Enrollment.Domain
                         ["student_id"] = enrollment.studentId.Value,
                         ["course_id"] = enrollment.courseId.Value,
                         ["created_at"] = enrollment.createdAt.Value.ToString(),
-                        ["upated_at"] = enrollment.updatedAt.Value.ToString(),
+                        ["updated_at"] = enrollment.updatedAt.Value.ToString(),
                     }
                 )
             );

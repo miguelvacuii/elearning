@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using elearning.src.Shared.Domain.Bus.Event;
 using elearning.src.Shared.Infrastructure.Service.Mailer;
 

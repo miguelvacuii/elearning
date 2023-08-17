@@ -1,14 +1,16 @@
-﻿namespace elearning.src.StudentParticipation.Enrollment.Domain
+﻿using elearning.src.Shared.Domain.Bus.Query;
+
+namespace elearning.src.CourseBackoffice.Application.Query.Response
 {
-    public class Course
-    {
+    public class CourseResponse : IResponse {
+
         public string id { get; private set; }
         public string name { get; private set; }
         public string description { get; private set; }
         public string status { get; private set; }
         public string teacherId { get; private set; }
 
-        public Course (
+        public CourseResponse(
             string id,
             string name,
             string description,
