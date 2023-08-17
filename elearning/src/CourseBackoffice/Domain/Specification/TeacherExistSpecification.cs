@@ -15,7 +15,7 @@ namespace elearning.src.CourseBackoffice.Domain.Specification
 
         public override bool IsSatisfiedBy(Course candidate) {
             Teacher teacher = courseAdapter.FindTeacherById(candidate.teacherId.Value);
-            return (teacher != null && teacher.role != AuthUser.ROLE_TEACHER) ? false : true;
+            return (teacher == null || teacher.role != AuthUser.ROLE_TEACHER) ? false : true;
         }
     }
 }
