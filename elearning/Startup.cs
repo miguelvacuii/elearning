@@ -35,9 +35,9 @@ namespace elearning
             (new src.IAM.Token.Infrastructure.Framework.Configure.Startup.Service.DomainServices()).Load(services);
             (new src.IAM.Token.Infrastructure.Framework.Configure.Startup.Service.ApplicationServices()).Load(services);
 
-            (new src.CourseBackoffice.Infrastructure.Framework.Configure.Startup.Service.InfrastructureServices()).Load(services);
-            (new src.CourseBackoffice.Infrastructure.Framework.Configure.Startup.Service.DomainServices()).Load(services);
-            (new src.CourseBackoffice.Infrastructure.Framework.Configure.Startup.Service.ApplicationServices()).Load(services);
+            (new src.CourseAdministration.Course.Infrastructure.Framework.Configure.Startup.Service.InfrastructureServices()).Load(services);
+            (new src.CourseAdministration.Course.Infrastructure.Framework.Configure.Startup.Service.DomainServices()).Load(services);
+            (new src.CourseAdministration.Course.Infrastructure.Framework.Configure.Startup.Service.ApplicationServices()).Load(services);
 
             (new src.StudentParticipation.Enrollment.Infrastructure.Framework.Configure.Startup.Service.InfrastructureServices()).Load(services);
             (new src.StudentParticipation.Enrollment.Infrastructure.Framework.Configure.Startup.Service.DomainServices()).Load(services);
@@ -59,9 +59,9 @@ namespace elearning
                 (new src.IAM.Token.Infrastructure.Framework.Configure.Startup.Subscriber.SyncCommandSubscriber()).Setup(context);
                 (new src.IAM.Token.Infrastructure.Framework.Configure.Startup.Subscriber.SyncEventSubscriber()).Setup(context);
 
-                (new src.CourseBackoffice.Infrastructure.Framework.Configure.Startup.Subscriber.SyncCommandSubscriber()).Setup(context);
-                (new src.CourseBackoffice.Infrastructure.Framework.Configure.Startup.Subscriber.QueryBusSubscriber()).Setup(context);
-                (new src.CourseBackoffice.Infrastructure.Framework.Configure.Startup.Subscriber.SyncEventSubscriber()).Setup(context);
+                (new src.CourseAdministration.Course.Infrastructure.Framework.Configure.Startup.Subscriber.SyncCommandSubscriber()).Setup(context);
+                (new src.CourseAdministration.Course.Infrastructure.Framework.Configure.Startup.Subscriber.QueryBusSubscriber()).Setup(context);
+                (new src.CourseAdministration.Course.Infrastructure.Framework.Configure.Startup.Subscriber.SyncEventSubscriber()).Setup(context);
 
                 (new src.StudentParticipation.Enrollment.Infrastructure.Framework.Configure.Startup.Subscriber.SyncCommandSubscriber()).Setup(context);
                 (new src.StudentParticipation.Enrollment.Infrastructure.Framework.Configure.Startup.Subscriber.SyncEventSubscriber()).Setup(context);

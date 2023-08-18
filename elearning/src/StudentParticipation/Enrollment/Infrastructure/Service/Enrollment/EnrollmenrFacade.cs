@@ -1,4 +1,4 @@
-﻿using elearning.src.CourseBackoffice.Application.Query.FindById;
+﻿using elearning.src.CourseAdministration.Course.Application.Query.FindById;
 using elearning.src.IAM.User.Application.Query.FindById;
 using elearning.src.Shared.Domain.Bus.Query;
 

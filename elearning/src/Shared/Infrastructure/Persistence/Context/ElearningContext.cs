@@ -4,8 +4,8 @@ using elearning.src.IAM.Token.Domain;
 using elearning.src.IAM.Token.Infrastructure.Persistence.Mapping;
 using elearning.src.IAM.User.Domain;
 using elearning.src.IAM.User.Infrastructure.Persistence.Mapping;
-using Course = elearning.src.CourseBackoffice.Domain.Course;
-using elearning.src.CourseBackoffice.Infrastructure.Persistence.Mapping;
+using Course = elearning.src.CourseAdministration.Course.Domain.Course;
+using elearning.src.CourseAdministration.Course.Infrastructure.Persistence.Mapping;
 using elearning.src.StudentParticipation.Enrollment.Domain;
 using elearning.src.StudentParticipation.Enrollment.Infrastructure.Persistence.Mapping;
 
