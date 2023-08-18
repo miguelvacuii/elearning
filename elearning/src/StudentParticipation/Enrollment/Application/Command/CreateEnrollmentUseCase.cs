@@ -1,4 +1,4 @@
-﻿using elearning.src.CourseBackoffice.Domain;
+﻿using elearning.src.CourseAdministration.Course.Domain;
 using elearning.src.Shared.Domain.Bus.Event;
 using elearning.src.StudentParticipation.Enrollment.Domain;
 using EnrollmentAggregate = elearning.src.StudentParticipation.Enrollment.Domain.Enrollment;
