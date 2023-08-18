@@ -96,7 +96,7 @@ namespace elearning.src.CourseAdministration.Course.Domain
             description = newDescription;
 
             this.Record(
-                new CoursePublishedEvent(
+                new CourseUpdatedEvent(
                     id.Value,
                     new Dictionary<string, string>()
                     {
