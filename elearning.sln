@@ -1,0 +1,39 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.810.25
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "elearning", "elearning\elearning.csproj", "{FFEE7B05-74F0-4EC9-86EC-C33233593B4F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "elearning.Tests", "elearning.Tests\elearning.Tests.csproj", "{570D4A3E-CBEC-4EBC-8730-9D591FAC4ACE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{1F6B943A-DC90-4869-9567-4C7CDB6F400E}"
+	ProjectSection(SolutionItems) = preProject
+		Dockerfile = Dockerfile
+		docker-compose.yml = docker-compose.yml
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FFEE7B05-74F0-4EC9-86EC-C33233593B4F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FFEE7B05-74F0-4EC9-86EC-C33233593B4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FFEE7B05-74F0-4EC9-86EC-C33233593B4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FFEE7B05-74F0-4EC9-86EC-C33233593B4F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{570D4A3E-CBEC-4EBC-8730-9D591FAC4ACE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{570D4A3E-CBEC-4EBC-8730-9D591FAC4ACE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{570D4A3E-CBEC-4EBC-8730-9D591FAC4ACE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{570D4A3E-CBEC-4EBC-8730-9D591FAC4ACE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D88E83A7-AB75-430F-8A99-EA1D91318FDE}
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+	EndGlobalSection
+EndGlobal
