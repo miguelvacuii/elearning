@@ -21,6 +21,6 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore elearning.sln
     - name: Build
-      run: dotnet build
+      run: dotnet build elearning.sln
     - name: Test
       run: dotnet test
