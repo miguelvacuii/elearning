@@ -145,6 +145,8 @@
     <Folder Include="src\CourseAdministration\Course\Application\Query\FindById\" />
     <Folder Include="src\CourseAdministration\Course\Application\Query\Response\" />
     <Folder Include="etc\" />
+    <Folder Include=".github\" />
+    <Folder Include=".github\workflows\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -307,5 +309,8 @@
     <None Remove="src\StudentParticipation\Enrollment\Infrastructure\Service\Enrollment\" />
     <None Remove="Serilog" />
     <None Remove="etc\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include=".github\workflows\testing.yml" />
   </ItemGroup>
 </Project>
