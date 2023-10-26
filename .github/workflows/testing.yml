@@ -11,18 +11,22 @@ jobs:
 
     runs-on: ubuntu-latest
 
+    defaults:
+     run:
+      working-directory: ./
+
     steps:
     - uses: actions/checkout@v3
     - name: Setup .NET
       uses: actions/setup-dotnet@v3
       with:
         dotnet-version: 2.1.x
+        
+    - name: List directories
+      run: ls -ll
     - name: Restore dependencies
-      working-directory: ./elearning
       run: dotnet restore elearning.sln
     - name: Build
-      working-directory: ./elearning
       run: dotnet build elearning.sln --no-restore
     - name: Test
-      working-directory: ./elearning
       run: dotnet test --no-build --verbosity normal
