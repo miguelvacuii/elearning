@@ -13,7 +13,7 @@ jobs:
 
     defaults:
      run:
-      working-directory: ./elearning
+      working-directory: ./
 
     steps:
     - uses: actions/checkout@v3
@@ -29,5 +29,4 @@ jobs:
     - name: Build
       run: dotnet build elearning.sln --no-restore
     - name: Test
-      working-directory: ./elearning
       run: dotnet test --no-build --verbosity normal
