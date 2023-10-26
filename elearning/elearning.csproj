@@ -144,6 +144,7 @@
     <Folder Include="src\CourseAdministration\Course\Domain\Service\" />
     <Folder Include="src\CourseAdministration\Course\Application\Query\FindById\" />
     <Folder Include="src\CourseAdministration\Course\Application\Query\Response\" />
+    <Folder Include="etc\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -155,6 +156,7 @@
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer" Version="2.2.0" />
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="2.1.0" />
     <PackageReference Include="JsonApiSerializer" Version="1.7.4" />
+    <PackageReference Include="Serilog" Version="2.1.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -303,5 +305,7 @@
     <None Remove="src\StudentParticipation\Enrollment\Infrastructure\Framework\" />
     <None Remove="src\StudentParticipation\Enrollment\Infrastructure\Persistence\" />
     <None Remove="src\StudentParticipation\Enrollment\Infrastructure\Service\Enrollment\" />
+    <None Remove="Serilog" />
+    <None Remove="etc\" />
   </ItemGroup>
 </Project>
