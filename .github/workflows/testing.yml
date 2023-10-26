@@ -21,6 +21,6 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore elearning.sln
     - name: Build
-      run: dotnet build elearning.sln --no-restore
+      run: dotnet build elearning.sln
     - name: Test
-      run: dotnet test --no-build --verbosity normal
+      run: dotnet test
